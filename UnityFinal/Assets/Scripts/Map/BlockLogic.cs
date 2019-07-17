@@ -25,10 +25,13 @@ public class BlockLogic : MonoBehaviour
     int x_index;
     int z_index;
     MeshFilter meshFilter;
-    bool m_walkable;
+    public bool m_walkable;
+    public bool m_summonable;
     [SerializeField]
-    Mesh onAttackMesh;
+    Mesh onAttackMesh = null;
     Mesh defaultMesh;
+    private GameObject m_player;
+    private GameObject m_obstacle;
     public bool [] isEdge = new bool [4];
     
     void Start()
@@ -36,6 +39,7 @@ public class BlockLogic : MonoBehaviour
         x_index = 0;
         z_index = 0;
         m_walkable = true;
+        m_summonable = true;
         meshFilter = GetComponent<MeshFilter>();
         defaultMesh = meshFilter.mesh;
 
@@ -56,28 +60,28 @@ public class BlockLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.GetComponentInChildren<PlayerLogic>() != null) {
-            m_walkable = false;
-        } else {
-            m_walkable = true;
-        }
+
     }
 
     void HandleDamageSource(GameObject damageSource) 
     {
         // Update the appearance of the block
-        // Pass the damage source to player
-        PlayerLogic player = GetComponentInChildren<PlayerLogic>();
-        if (player) {
-            player.takeDamage(damageSource);
+        // Pass the damage source to player        
+        if (m_player) {
+            damageSource.SetActive(false);
+            m_player.GetComponent<PlayerLogic>().takeDamage(damageSource);
+            if (damageSource.transform.parent.gameObject.tag == "Bullet") {
+                Destroy(damageSource.transform.parent.gameObject);
+            }
         }
-    }
-
-
-    public bool isWalkable() {
-        return m_walkable;
-    }
-
+        if (m_obstacle) {
+            damageSource.SetActive(false);
+            m_obstacle.GetComponent<ObstacleLogic>().takeDamage(damageSource);
+            if (damageSource.transform.parent.gameObject.tag == "Bullet") {
+                Destroy(damageSource.transform.parent.gameObject);
+            }
+        }
+    }    
 
     void ChangeBlockAppearanceOnAttack() {
         if(onAttackMesh) {
@@ -94,22 +98,64 @@ public class BlockLogic : MonoBehaviour
     private void OnTriggerEnter(Collider other) {        
         if (other.tag == "DamageSource") {            
             // Change the block appearence if there is damageSource in the trigger of the block
-            ChangeBlockAppearanceOnAttack();
+            ChangeBlockAppearanceOnAttack();            
             other.gameObject.GetComponent<DamageSourceLogic>().OnDisableEvent += ResetBlockAppearace;            
-        } 
+        }
+        
     }
 
     private void OnTriggerStay(Collider other) {        
         if (other.tag == "DamageSource") {
-            // if there is damageSource in the trigger of the block
             HandleDamageSource(other.gameObject);
         } 
     }
 
     private void OnTriggerExit(Collider other) {
-        if (other.tag == "DamageSource") {
-            // if there is damageSource in the trigger of the block
+        if (other.tag == "DamageSource") {            
             ResetBlockAppearace();
         }  
     }
+
+    public void setPlayer(GameObject player) {
+        // Called when a player enter the block
+        m_player = player;
+        m_walkable = false;
+        m_summonable = false;
+    }
+    public void resetPlayer() {
+        // Called when a player leave the block
+        m_player = null;
+        m_walkable = true;
+        m_summonable = true;        
+    }
+    public void setObstacle(GameObject obstacle) {
+        // Called when an obstacle is summoned on the block
+        m_obstacle = obstacle;
+        m_walkable = false;
+        m_summonable = false;
+    }
+
+    public void resetObstacle() {
+        // Called when an obstacle on the block is destroyed
+        m_obstacle = null;
+        m_walkable = true;
+        m_summonable = true;
+    }
+
+    public GameObject getObstacle() {
+        return m_obstacle;
+    }
+
+    public GameObject getPlayer() {
+        return m_player;
+    }
+
+    public bool isSummonable() {
+        return m_summonable;
+    }
+
+    public bool isWalkable() {
+        return m_walkable;
+    }
+
 }

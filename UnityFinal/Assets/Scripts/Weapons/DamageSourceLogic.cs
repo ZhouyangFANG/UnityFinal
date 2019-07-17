@@ -4,10 +4,12 @@ using UnityEngine;
 
 
 // This script is used to describe a basic damage souce
-// Damage Source should be generated with Animation Events
+// Damage Source should be activated and deactivated with Animation Events
 // Be deleted by Animation Events or Other Logic
 // Moving, and deleting is controlled by other scripts
 // Generating is handled in WeaponLogic.OnAttack()
+
+// DamageSource will trigger the BlockLogic to pass damage to the player on it
 public class DamageSourceLogic : MonoBehaviour
 {
     PlayerID m_sourcePlayerId;
@@ -29,8 +31,9 @@ public class DamageSourceLogic : MonoBehaviour
     }
     
     private void OnDisable() {
+        // Used to reset block appearance since OnTriggerExit is not work for disabling
         if (OnDisableEvent != null) {
-            OnDisableEvent(); // Reset the block apperence for only once
+            OnDisableEvent(); // Reset the block apperance for only once
         }
         OnDisableEvent = null;
     }

@@ -9,6 +9,7 @@ using UnityEngine;
 // Save the playerLocation as two index[x][z] (which block the player is currently land on)
 
 public enum PlayerID {
+    Nobody = -1,
     Player1 = 0,
     Player2 = 1,
     // Player3 = 2,
@@ -115,15 +116,18 @@ public class PlayerController : MonoBehaviour
     
     bool TryMove(Direction direction) {
         // return true if it successfully moved
+        
+        // Handle edge
         if (transform.parent.gameObject.GetComponent<BlockLogic>().isEdge[(int)direction]) {
             return false;
         }
+        
+        
         int new_x_index = xIndex;
         int new_z_index = zIndex;
         switch(direction) {
             case Direction.XPlus:
-                transform.rotation = Quaternion.LookRotation(Vector3.right);
-                // Below should have something todo with Animations
+                transform.rotation = Quaternion.LookRotation(Vector3.right); // Update the player facing direction
                 new_x_index += 1;
             break;
             case Direction.XMinus:
@@ -140,10 +144,15 @@ public class PlayerController : MonoBehaviour
             break;
         }
 
-        if (MapLogic.Instance.getBlock(new_x_index, new_z_index).GetComponent<BlockLogic>().isWalkable()) {
+        BlockLogic block = MapLogic.Instance.getBlock(new_x_index, new_z_index).GetComponent<BlockLogic>(); // The new block that player is trying to accessing
+        
+        if (block.isWalkable()) {
+            BlockLogic cur_block = MapLogic.Instance.getBlock(xIndex, zIndex).GetComponent<BlockLogic>(); // current block     
+            cur_block.resetPlayer();
             xIndex = new_x_index;
             zIndex = new_z_index;
-            transform.SetParent(MapLogic.Instance.getBlock(xIndex, zIndex).transform, false);
+            transform.SetParent(block.transform, false); // set the parent to the certain block to move the player 
+            block.setPlayer(gameObject);
             return true;
         }
         return false;
@@ -152,8 +161,7 @@ public class PlayerController : MonoBehaviour
     bool TryAttack(Direction direction) {
         switch(direction) {
             case Direction.XPlus:
-                transform.rotation = Quaternion.LookRotation(Vector3.right);
-                // Below should have something todo with Animations
+                transform.rotation = Quaternion.LookRotation(Vector3.right); // update the player facing direction
             break;
             case Direction.XMinus:
                 transform.rotation = Quaternion.LookRotation(Vector3.left);       
@@ -165,12 +173,14 @@ public class PlayerController : MonoBehaviour
                 transform.rotation = Quaternion.LookRotation(Vector3.back);                                
             break;
         }
-
+        
         if (GetComponentInChildren<WeaponLogic>()) {
-            
+            // Call the attack funcion in the weapon
             return GetComponentInChildren<WeaponLogic>().TryAttack();
         }
         return false;
     }
+
+    
     
 }

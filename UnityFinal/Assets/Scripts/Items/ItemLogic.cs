@@ -25,6 +25,7 @@ public class ItemLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // May have better choice to handle
         if (transform.parent) {
             PlayerLogic player = transform.parent.GetComponent<PlayerLogic>(); // Check if player is on the same block
             if (player) {

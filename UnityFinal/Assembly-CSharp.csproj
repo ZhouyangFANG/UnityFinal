@@ -70,6 +70,9 @@
      <Compile Include="Assets\Scripts\Managers\LocalizationManager.cs" />
      <Compile Include="Assets\Scripts\Map\BlockLogic.cs" />
      <Compile Include="Assets\Scripts\Map\MapLogic.cs" />
+     <Compile Include="Assets\Scripts\Map\ObstacleLogic.cs" />
+     <Compile Include="Assets\Scripts\Map\ObstacleSummonLogic.cs" />
+     <Compile Include="Assets\Scripts\Map\RandomEventLogic.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerLogic.cs" />
      <Compile Include="Assets\Scripts\Weapons\Bullet\BulletLogic.cs" />

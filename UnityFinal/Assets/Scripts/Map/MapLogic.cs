@@ -82,12 +82,14 @@ public class MapLogic : MonoBehaviour
         
         const float playerHeight = 3.0f;
         Transform Trans1 = m_blocks[0][0].transform;
+                
         GameObject Player1 = Instantiate(playerPrefab, Trans1.position + new Vector3(0, playerHeight, 0), Trans1.rotation);
         Player1.transform.parent = Trans1;
         Player1.name = "Player1";
         Player1.tag = "Player";
         Player1.GetComponent<PlayerController>().InitInfo(PlayerID.Player1, 0, 0);
         m_players[(int)PlayerID.Player1] = Player1;
+        Trans1.GetComponent<BlockLogic>().setPlayer(Player1);
 
         Transform Trans2 = m_blocks[MapXBlockNum - 1][MapZBlockNum - 1].transform;
         GameObject Player2 = Instantiate(playerPrefab, Trans2.position + new Vector3(0, playerHeight, 0), Trans2.rotation);
@@ -96,9 +98,11 @@ public class MapLogic : MonoBehaviour
         Player2.tag = "Player";
         Player2.GetComponent<PlayerController>().InitInfo(PlayerID.Player2, MapXBlockNum - 1, MapZBlockNum - 1);
         m_players[(int)PlayerID.Player2] = Player2;
+        Trans2.GetComponent<BlockLogic>().setPlayer(Player2);
     }
 
     public GameObject getBlock(int x, int z) {
+        // Return the block
         if (x >= 0 && x <= MapXBlockNum - 1) {
             if (z >= 0 && z <= MapZBlockNum - 1) {
                 if (m_blocks[x][z]) {
@@ -111,6 +115,7 @@ public class MapLogic : MonoBehaviour
     }
 
     public GameObject getPlayer(PlayerID id) {
+        // Quickly return other player by id
         if (PlayerID.IsDefined(typeof(PlayerID),id))  {
             if (m_players[(int)id]) {
                 return m_players[(int)id];

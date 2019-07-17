@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// Handle other logic for player rather than moving and attacking
 public class PlayerLogic : MonoBehaviour
 {
     PlayerID m_playerID;
@@ -37,7 +39,7 @@ public class PlayerLogic : MonoBehaviour
     // Receive the damage from the block logic
     public void takeDamage(GameObject damageSource) {
         if (damageSource.GetComponent<DamageSourceLogic>().getSourcePlayerID() != m_playerID) {
-            // Prevent damage self (if sourcePlayerId is set)
+            // Prevent damage to self (if sourcePlayerId is set)
             if (m_invincibleAfterDamageTimer >= InvincibleAfterDamageTime) {
                 m_invincibleAfterDamageTimer = 0.0f;
                 // Update the player appearance here (invincible)
@@ -56,16 +58,29 @@ public class PlayerLogic : MonoBehaviour
 
     public void takeWeapon(GameObject weapon) {
         // weapon is a prefab
+        
         if (GetComponentsInChildren<WeaponLogic>().Length != 0) {
+            // the player is holding other weapon
+            // destroy them before get new weapon
             foreach(WeaponLogic currentWeapon in GetComponentsInChildren<WeaponLogic>()) {
                 Destroy(currentWeapon.gameObject);
             }
         }
-        Instantiate(weapon, transform);
+        WeaponLogic weaponLogic = Instantiate(weapon, transform).GetComponent<WeaponLogic>();
+        weaponLogic.OnAttackStart += AttackStarted;
+        weaponLogic.OnAttackFinish += AttackFinished;
     }
 
     public PlayerID getPlayerID() {
         return m_playerID;
+    }
+
+    void AttackStarted() {
+        GetComponent<PlayerController>().m_isAttacking = true;
+    }
+
+    void AttackFinished() {
+        GetComponent<PlayerController>().m_isAttacking = false;
     }
 
 }

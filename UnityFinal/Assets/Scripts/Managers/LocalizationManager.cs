@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Unimplemented
 public class LocalizationManager : MonoBehaviour
 {
     public static LocalizationManager Instance;

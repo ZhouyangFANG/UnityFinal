@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // The basic logic of a weapon
+// Provide convenient logic between caller and different weapon
 // All attack logic are handled in OnAttack
 // All weapons should have extra script to bind certain attack logic to OnAttack
 // Attack is creating DamageSource 
@@ -47,7 +48,6 @@ public class WeaponLogic : MonoBehaviour
         if (OnAttackStart != null) {       
             OnAttackStart();
         }
-        GetComponentInParent<PlayerController>().m_isAttacking = true;
     }
 
     public void FinishAttack() {
@@ -55,7 +55,6 @@ public class WeaponLogic : MonoBehaviour
         if(OnAttackFinish != null) {
             OnAttackFinish();
         }
-        GetComponentInParent<PlayerController>().m_isAttacking = false;
     }
 }
 

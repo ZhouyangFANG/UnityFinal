@@ -26,12 +26,8 @@ public class PistolLogic : MonoBehaviour
 
     void Attack() {
         animator.SetTrigger("Attack");
-        GameObject bullet = Instantiate(bulletPrefab, shootPos.position, shootPos.rotation);
-        bullet.GetComponent<BulletLogic>().InitBulletInfo(GetComponentInParent<PlayerLogic>().getPlayerID(), Damage, BulletSpeed);
+        GameObject bullet = Instantiate(bulletPrefab, shootPos.position, shootPos.rotation); // Generate a bullet at the shootPos
+        bullet.GetComponent<BulletLogic>().InitBulletInfo(GetComponentInParent<PlayerLogic>().getPlayerID(), Damage, BulletSpeed); // Initialize the bullet information
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

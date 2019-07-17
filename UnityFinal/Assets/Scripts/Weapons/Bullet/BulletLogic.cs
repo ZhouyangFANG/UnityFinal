@@ -21,6 +21,6 @@ public class BulletLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = transform.position + transform.up * Time.deltaTime * bulletSpeed * transform.localScale.x;
+        transform.position = transform.position + transform.up * Time.deltaTime * bulletSpeed * transform.localScale.x; // Move Forward
     }
 }
