@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 7044434938446154715}
   - component: {fileID: 7044434938444860411}
   - component: {fileID: 7044434938443729211}
+  - component: {fileID: 5828788625290541755}
+  - component: {fileID: 6343550227243812135}
   m_Layer: 0
   m_Name: HealthPack
   m_TagString: Item
@@ -31,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 360, z: 90}
 --- !u!33 &7044434938444860411
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -77,3 +79,33 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!111 &5828788625290541755
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7044434938445731835}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: a10375ae38926db4aa443a1748841c70, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: a10375ae38926db4aa443a1748841c70, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!114 &6343550227243812135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7044434938445731835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 067beb7ab0d6baa49a599e94db6d12b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPrefab: {fileID: 0}
+  m_itemType: 2
