@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33559657086904636}
   - component: {fileID: 23935537751192922}
   - component: {fileID: 8242167875039345931}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -103,6 +103,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DamageSource
+      objectReference: {fileID: 0}
+    - target: {fileID: 3140468101471846747, guid: 8ddbdc1f160bf23438ce5b965f0055e0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5270520011980974756, guid: 8ddbdc1f160bf23438ce5b965f0055e0,
         type: 3}

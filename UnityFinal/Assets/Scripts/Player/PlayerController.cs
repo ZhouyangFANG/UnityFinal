@@ -18,7 +18,7 @@ public enum PlayerID {
 
 public class PlayerController : MonoBehaviour
 {
-    float DefaultMoveCoolDownTime = 0.15f;    
+    float DefaultMoveCoolDownTime = 0.2f;    
     float MoveCoolDownTime;    
     
     float m_moveCoolDownTimer = 0;
