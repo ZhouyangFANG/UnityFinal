@@ -35,8 +35,9 @@ public class MapLogic : MonoBehaviour
     [SerializeField]
     private GameObject basicBlockPrefab = null; // Prefab of a block With BlockLogic Script Attach to it
     [SerializeField]
-    private GameObject playerPrefab = null;
-
+    private GameObject player1Prefab = null;
+    [SerializeField]    
+    private GameObject player2Prefab = null;
     private GameObject [][] m_blocks;
     private GameObject [] m_players;
     // Start is called before the first frame update
@@ -80,10 +81,10 @@ public class MapLogic : MonoBehaviour
         // Generate two for now
         m_players = new GameObject [PlayerID.GetValues(typeof(PlayerID)).Length];
         
-        const float playerHeight = 3.0f;
+        const float playerHeight = 0;
         Transform Trans1 = m_blocks[0][0].transform;
                 
-        GameObject Player1 = Instantiate(playerPrefab, Trans1.position + new Vector3(0, playerHeight, 0), Trans1.rotation);
+        GameObject Player1 = Instantiate(player1Prefab, Trans1.position + new Vector3(0, playerHeight, 0), Trans1.rotation);
         Player1.transform.parent = Trans1;
         Player1.name = "Player1";
         Player1.tag = "Player";
@@ -92,7 +93,7 @@ public class MapLogic : MonoBehaviour
         Trans1.gameObject.GetComponent<BlockLogic>().setPlayer(Player1);
 
         Transform Trans2 = m_blocks[MapXBlockNum - 1][MapZBlockNum - 1].transform;
-        GameObject Player2 = Instantiate(playerPrefab, Trans2.position + new Vector3(0, playerHeight, 0), Trans2.rotation);
+        GameObject Player2 = Instantiate(player2Prefab, Trans2.position + new Vector3(0, playerHeight, 0), Trans2.rotation);
         Player2.transform.parent = Trans2;
         Player2.name = "Player2";
         Player2.tag = "Player";

@@ -23,17 +23,27 @@ public class PlayerController : MonoBehaviour
     
     float m_moveCoolDownTimer = 0;
     
+    
     PlayerID m_playerID;
 
+    Animator animator;
+
+    Direction m_direction;
+    BlockLogic nextBlock;
     private int xIndex;
     private int zIndex;
-    public bool m_isAttacking;    
+    public bool m_isAttacking;   
+    private bool jumpState; 
+ 
+    private bool m_isMoving;
     // Start is called before the first frame update
     void Start()
     {
         m_isAttacking = false;
-        MoveCoolDownTime = DefaultMoveCoolDownTime;        
-        m_moveCoolDownTimer = MoveCoolDownTime;
+        m_isMoving = false;
+        jumpState = false;
+        MoveCoolDownTime = DefaultMoveCoolDownTime;
+        animator = GetComponent<Animator>();
     }
 
     public void InitInfo(PlayerID id, int x, int z) {
@@ -43,50 +53,22 @@ public class PlayerController : MonoBehaviour
         GetComponent<PlayerLogic>().InitInfo(id);
     }
 
-    void Update() {   
+    void Update() {
+
         if (m_moveCoolDownTimer < MoveCoolDownTime) {
             m_moveCoolDownTimer += Time.deltaTime;
         }
-        
-        float m_horizontalMoveInput = Input.GetAxisRaw(m_playerID.ToString() + "_HorizontalMove");                
-        float m_verticalMoveInput = Input.GetAxisRaw(m_playerID.ToString() + "_VerticalMove");
-        bool isHorizontalMoving = Input.GetButton(m_playerID.ToString() + "_HorizontalMove");
-        bool isVerticalMoving = Input.GetButton(m_playerID.ToString() + "_VerticalMove");
-        bool isMoved = false;        
-        
-
-        if (!m_isAttacking && !(isHorizontalMoving && isVerticalMoving)) { // Prevent Moving Diagonally
-            if ( isHorizontalMoving && m_moveCoolDownTimer >= MoveCoolDownTime) {
-                
-                if (m_horizontalMoveInput > 0) {
-                    isMoved = TryMove(Direction.Right);
-                } else {
-                    isMoved = TryMove(Direction.Left);
-                }
-
-                if (isMoved) {
-                    m_moveCoolDownTimer = 0;
-                }
-            }
-
-            if ( isVerticalMoving && m_moveCoolDownTimer >= MoveCoolDownTime) {
-                
-                if (m_verticalMoveInput > 0) {
-                    isMoved = TryMove(Direction.Up);
-                } else {
-                    isMoved = TryMove(Direction.Down);
-                }
-
-                if (isMoved) {
-                    m_moveCoolDownTimer = 0;
-                }
-            }
-        }       
 
         float m_horizontalFireInput = Input.GetAxisRaw(m_playerID.ToString() + "_HorizontalFire");                
         float m_verticalFireInput = Input.GetAxisRaw(m_playerID.ToString() + "_VerticalFire");
         bool isHorizontalFiring = Input.GetButton(m_playerID.ToString() + "_HorizontalFire");
         bool isVerticalFiring = Input.GetButton(m_playerID.ToString() + "_VerticalFire");
+
+        float m_horizontalMoveInput = Input.GetAxisRaw(m_playerID.ToString() + "_HorizontalMove");                
+        float m_verticalMoveInput = Input.GetAxisRaw(m_playerID.ToString() + "_VerticalMove");
+        bool isHorizontalMoving = Input.GetButton(m_playerID.ToString() + "_HorizontalMove");
+        bool isVerticalMoving = Input.GetButton(m_playerID.ToString() + "_VerticalMove");
+        bool isMoved = false;     
 
 
         if (!(isHorizontalFiring && isVerticalFiring)) { // Prevent Vertical Fire            
@@ -106,6 +88,39 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+
+
+        if (!m_isAttacking && !(isHorizontalMoving && isVerticalMoving) && (m_moveCoolDownTimer > MoveCoolDownTime)) { // Prevent Moving Diagonally
+            if ( isHorizontalMoving && !m_isMoving) {
+                
+                if (m_horizontalMoveInput > 0) {
+                    isMoved = TryMove(Direction.Right);
+                } else {
+                    isMoved = TryMove(Direction.Left);
+                }
+
+                if (isMoved) {
+                    m_isMoving = true;
+                    m_moveCoolDownTimer = 0.0f;
+                }
+            }
+
+            if ( isVerticalMoving && !m_isMoving) {
+                
+                if (m_verticalMoveInput > 0) {
+                    isMoved = TryMove(Direction.Up);
+                } else {
+                    isMoved = TryMove(Direction.Down);
+                }
+
+                if (isMoved) {
+                    m_isMoving = true;
+                    m_moveCoolDownTimer = 0.0f;
+                }
+            }
+        }       
+
+        
 
         if (Input.GetButtonDown(m_playerID.ToString() + "_CastPowerUp")) {
             GetComponent<PlayerLogic>().castCurrentTakingPowerUp();
@@ -148,6 +163,85 @@ public class PlayerController : MonoBehaviour
                 new_z_index -= 1;
             break;
         }
+        m_direction = direction;
+
+        BlockLogic block = MapLogic.Instance.getBlock(new_x_index, new_z_index).GetComponent<BlockLogic>(); // The new block that player is trying to accessing
+        if (block.isWalkable()) {
+            BlockLogic cur_block = MapLogic.Instance.getBlock(xIndex, zIndex).GetComponent<BlockLogic>(); // current block
+
+            if (jumpState) {
+                animator.SetTrigger("Jump1");
+            } else {
+                animator.SetTrigger("Jump2");
+            }
+            jumpState = !jumpState;
+            
+            // transform.SetParent(block.transform, false); // set the parent to the certain block to move the player        
+            // block.setPlayer(gameObject);
+            return true;
+        }        
+        return false;
+    }
+
+    bool TryAttack(Direction direction) {
+        WeaponLogic weapon = GetComponentInChildren<WeaponLogic>();
+        if (!weapon) {
+            return false;
+        }
+        switch(direction) {
+            case Direction.XPlus:
+                if (!m_isMoving) {
+                    transform.rotation = Quaternion.LookRotation(Vector3.right); // update the player facing direction
+                }
+            break;
+            case Direction.XMinus:
+                if (!m_isMoving) {
+                    transform.rotation = Quaternion.LookRotation(Vector3.left); // update the player facing direction
+                }
+            break;
+            case Direction.ZPlus:
+                if (!m_isMoving) {
+                    transform.rotation = Quaternion.LookRotation(Vector3.forward); // update the player facing direction
+                }
+            break;
+            case Direction.ZMinus:
+                if (!m_isMoving) {
+                    transform.rotation = Quaternion.LookRotation(Vector3.back); // update the player facing direction
+                }
+            break;
+        }
+
+        if (!m_isMoving) {
+            m_direction = direction;    
+        }
+        if (GetComponentInChildren<WeaponLogic>()) {
+            // Call the attack funcion in the weapon
+            return GetComponentInChildren<WeaponLogic>().tryAttack();
+        }
+        return false;
+    }
+
+    void MoveToNextBlock() {        
+        if (transform.parent.gameObject.GetComponent<BlockLogic>().isEdge[(int)m_direction]) {
+            return;
+        }
+
+        int new_x_index = xIndex;
+        int new_z_index = zIndex;
+        switch(m_direction) {
+            case Direction.XPlus:                
+                new_x_index += 1;
+            break;
+            case Direction.XMinus:                
+                new_x_index -= 1;
+            break;
+            case Direction.ZPlus:                
+                new_z_index += 1;
+            break;
+            case Direction.ZMinus:            
+                new_z_index -= 1;
+            break;
+        }        
 
         BlockLogic block = MapLogic.Instance.getBlock(new_x_index, new_z_index).GetComponent<BlockLogic>(); // The new block that player is trying to accessing
         
@@ -156,41 +250,25 @@ public class PlayerController : MonoBehaviour
             cur_block.resetPlayer();
             xIndex = new_x_index;
             zIndex = new_z_index;
-            transform.SetParent(block.transform, false); // set the parent to the certain block to move the player 
-            block.setPlayer(gameObject);
-            return true;
-        }
-        return false;
+            
+            // set the parent to the certain block to move the player            
+            transform.SetParent(block.transform, true);            
+            block.setPlayer(gameObject);         
+        }                
     }
 
-    bool TryAttack(Direction direction) {
-        switch(direction) {
-            case Direction.XPlus:
-                transform.rotation = Quaternion.LookRotation(Vector3.right); // update the player facing direction
-            break;
-            case Direction.XMinus:
-                transform.rotation = Quaternion.LookRotation(Vector3.left);       
-            break;
-            case Direction.ZPlus:
-                transform.rotation = Quaternion.LookRotation(Vector3.forward);                
-            break;
-            case Direction.ZMinus:
-                transform.rotation = Quaternion.LookRotation(Vector3.back);                                
-            break;
-        }
-        
-        if (GetComponentInChildren<WeaponLogic>()) {
-            // Call the attack funcion in the weapon
-            return GetComponentInChildren<WeaponLogic>().tryAttack();
-        }
-        return false;
+    public void finishMoving() {
+        m_isMoving = false;
+
     }
 
     public void applySpeedUp() {
-        MoveCoolDownTime = DefaultMoveCoolDownTime / 2.0f;
+        animator.SetFloat("SpeedMultiplier", 1.4f);
+        MoveCoolDownTime = DefaultMoveCoolDownTime * 1 / 1.4f;
     }
     
     public void resetSpeed() {
+        animator.SetFloat("SpeedMultiplier", 1);
         MoveCoolDownTime = DefaultMoveCoolDownTime;
     }
 }

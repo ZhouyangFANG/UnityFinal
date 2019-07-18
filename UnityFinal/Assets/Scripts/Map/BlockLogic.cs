@@ -78,10 +78,11 @@ public class BlockLogic : MonoBehaviour
         // Update the appearance of the block
         // Pass the damage source to player        
         if (m_player) {
-            damageSource.SetActive(false);
-            m_player.GetComponent<PlayerLogic>().takeDamage(damageSource);
+            m_player.takeDamage(damageSource);
             if (damageSource.transform.parent.gameObject.tag == "Bullet") {
-                Destroy(damageSource.transform.parent.gameObject);
+                if (m_player.getPlayerID() != damageSource.GetComponent<DamageSourceLogic>().getSourcePlayerID()) {
+                    Destroy(damageSource.transform.parent.gameObject);
+                }
             }
         }
         if (m_obstacle) {

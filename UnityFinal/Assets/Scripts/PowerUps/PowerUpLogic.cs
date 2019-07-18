@@ -21,9 +21,7 @@ public class PowerUpLogic : MonoBehaviour
         
     }
 
-    public void cast() {
-        
-        Debug.Log("Here");
+    public void cast() {                
         if (OnCastStart != null) {
             OnCastStart();
         }

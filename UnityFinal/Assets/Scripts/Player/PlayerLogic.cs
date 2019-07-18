@@ -46,6 +46,7 @@ public class PlayerLogic : MonoBehaviour
                 m_invincibleAfterDamageTimer = 0.0f;
                 // Update the player appearance here (invincible)
                 Debug.Log(m_playerID.ToString() + " is damaged for 1 hp");
+                damageSource.SetActive(false);
                 m_hp -= damageSource.GetComponent<DamageSourceLogic>().getDamage();
                 if (m_hp <= 0) {
                     Death();

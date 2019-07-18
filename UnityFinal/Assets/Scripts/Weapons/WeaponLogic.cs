@@ -53,7 +53,7 @@ public class WeaponLogic : MonoBehaviour
     void FinishAttack() {
         // Usually Animation Events
         // After that the player can move see PlayerLogic
-        if(OnAttackFinish != null) {
+        if(OnAttackFinish != null) {            
             OnAttackFinish();
         }
     }

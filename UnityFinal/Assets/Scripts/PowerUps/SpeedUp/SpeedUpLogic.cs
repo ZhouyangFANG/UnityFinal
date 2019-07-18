@@ -21,7 +21,6 @@ public class SpeedUpLogic : MonoBehaviour
         m_effectTimer += Time.deltaTime;
         if (m_effectTimer > EffectTime) {
             ResetEffect();
-            Debug.Log("PowerUpEffectorDestroyed");
             Destroy(gameObject);
         }     
     }
