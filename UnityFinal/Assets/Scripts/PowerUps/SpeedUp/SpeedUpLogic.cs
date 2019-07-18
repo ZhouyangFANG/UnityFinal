@@ -31,7 +31,7 @@ public class SpeedUpLogic : MonoBehaviour
     }
 
 
-    void ApplySpeedUpEffect() {            
+    void ApplySpeedUpEffect() {
         transform.parent.GetComponent<PlayerController>().applySpeedUp();
     }
 
