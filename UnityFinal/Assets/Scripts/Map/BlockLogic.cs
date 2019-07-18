@@ -27,19 +27,19 @@ public class BlockLogic : MonoBehaviour
     MeshFilter meshFilter;
     public bool m_walkable;
     public bool m_summonable;
+
     [SerializeField]
     Mesh onAttackMesh = null;
     Mesh defaultMesh;
-    private GameObject m_player;
-    private GameObject m_obstacle;
+    private PlayerLogic m_player;
+    private ObstacleLogic m_obstacle;
+    private PickUpLogic m_pickUp;
     public bool [] isEdge = new bool [4];
     
     void Start()
     {
         x_index = 0;
-        z_index = 0;
-        m_walkable = true;
-        m_summonable = true;
+        z_index = 0;        
         meshFilter = GetComponent<MeshFilter>();
         defaultMesh = meshFilter.mesh;
 
@@ -53,7 +53,12 @@ public class BlockLogic : MonoBehaviour
         isEdge[(int)Direction.XPlus] = isEdgeXPlus;
         isEdge[(int)Direction.XMinus] = isEdgeXMinus;
         isEdge[(int)Direction.ZPlus] = isEdgeZPlus;
-        isEdge[(int)Direction.ZMinus] = isEdgeZMinus;        
+        isEdge[(int)Direction.ZMinus] = isEdgeZMinus;
+        m_walkable = true;
+        m_summonable = true;
+        m_player = null;
+        m_obstacle = null;
+        m_pickUp = null; 
     }
 
 
@@ -61,6 +66,11 @@ public class BlockLogic : MonoBehaviour
     void Update()
     {
 
+    }
+
+    void HandleItemPickUp() {
+        // Only be called when player enter the block and there is item on the block
+        m_player.GetComponent<PlayerLogic>().takePickUp(m_pickUp.GetComponent<PickUpLogic>());
     }
 
     void HandleDamageSource(GameObject damageSource) 
@@ -118,9 +128,12 @@ public class BlockLogic : MonoBehaviour
 
     public void setPlayer(GameObject player) {
         // Called when a player enter the block
-        m_player = player;
+        m_player = player.GetComponent<PlayerLogic>();
         m_walkable = false;
-        m_summonable = false;
+        m_summonable = false;        
+        if (m_pickUp) {
+            HandleItemPickUp();
+        }
     }
     public void resetPlayer() {
         // Called when a player leave the block
@@ -130,7 +143,7 @@ public class BlockLogic : MonoBehaviour
     }
     public void setObstacle(GameObject obstacle) {
         // Called when an obstacle is summoned on the block
-        m_obstacle = obstacle;
+        m_obstacle = obstacle.GetComponent<ObstacleLogic>();
         m_walkable = false;
         m_summonable = false;
     }
@@ -142,12 +155,26 @@ public class BlockLogic : MonoBehaviour
         m_summonable = true;
     }
 
-    public GameObject getObstacle() {
+    public void setItem(GameObject item) {
+        m_pickUp = item.GetComponent<PickUpLogic>();
+        m_summonable = false;
+    }
+
+    public void resetItem(GameObject item) {
+        m_pickUp = null;
+        m_summonable = true;
+    }
+
+    public ObstacleLogic getObstacle() {
         return m_obstacle;
     }
 
-    public GameObject getPlayer() {
+    public PlayerLogic getPlayer() {
         return m_player;
+    }
+
+    public PickUpLogic getPickUp() {
+        return m_pickUp;
     }
 
     public bool isSummonable() {

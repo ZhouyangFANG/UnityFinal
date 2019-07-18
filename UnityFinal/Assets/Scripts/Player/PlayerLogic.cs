@@ -56,7 +56,7 @@ public class PlayerLogic : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void takeWeapon(GameObject weapon) {
+    void TakeWeapon(GameObject weapon) {
         // weapon is a prefab
         
         if (GetComponentsInChildren<WeaponLogic>().Length != 0) {
@@ -69,6 +69,23 @@ public class PlayerLogic : MonoBehaviour
         WeaponLogic weaponLogic = Instantiate(weapon, transform).GetComponent<WeaponLogic>();
         weaponLogic.OnAttackStart += AttackStarted;
         weaponLogic.OnAttackFinish += AttackFinished;
+    }
+
+    public void takePickUp(PickUpLogic item) {
+        if (item.isWeapon()) {
+            TakeWeapon(item.getItemPrefab());
+        } else if (item.isPowerUp()) {
+
+        } else if (item.isHp()) {
+
+        }
+        Destroy(item.gameObject);
+    }
+
+    void TakeHp() {
+        if (m_hp < FullHp) {
+            m_hp += 1;
+        }
     }
 
     public PlayerID getPlayerID() {

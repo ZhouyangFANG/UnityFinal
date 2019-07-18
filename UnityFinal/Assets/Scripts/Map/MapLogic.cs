@@ -89,7 +89,7 @@ public class MapLogic : MonoBehaviour
         Player1.tag = "Player";
         Player1.GetComponent<PlayerController>().InitInfo(PlayerID.Player1, 0, 0);
         m_players[(int)PlayerID.Player1] = Player1;
-        Trans1.GetComponent<BlockLogic>().setPlayer(Player1);
+        Trans1.gameObject.GetComponent<BlockLogic>().setPlayer(Player1);
 
         Transform Trans2 = m_blocks[MapXBlockNum - 1][MapZBlockNum - 1].transform;
         GameObject Player2 = Instantiate(playerPrefab, Trans2.position + new Vector3(0, playerHeight, 0), Trans2.rotation);
@@ -98,7 +98,7 @@ public class MapLogic : MonoBehaviour
         Player2.tag = "Player";
         Player2.GetComponent<PlayerController>().InitInfo(PlayerID.Player2, MapXBlockNum - 1, MapZBlockNum - 1);
         m_players[(int)PlayerID.Player2] = Player2;
-        Trans2.GetComponent<BlockLogic>().setPlayer(Player2);
+        Trans2.gameObject.GetComponent<BlockLogic>().setPlayer(Player2);
     }
 
     public GameObject getBlock(int x, int z) {

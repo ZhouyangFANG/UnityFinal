@@ -6,7 +6,7 @@ public class BulletLogic : MonoBehaviour
 {    
     float bulletSpeed = 0f;
     [SerializeField]
-    DamageSourceLogic damageSource;
+    DamageSourceLogic damageSource = null;
     // Start is called before the first frame update
     void Start()
     {
