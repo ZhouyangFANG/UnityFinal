@@ -84,6 +84,7 @@ public class BlockLogic : MonoBehaviour
                 Destroy(damageSource.transform.parent.gameObject);
             }
         }
+
         if (m_obstacle) {
             damageSource.SetActive(false);
             m_obstacle.GetComponent<ObstacleLogic>().takeDamage(damageSource);
@@ -91,6 +92,7 @@ public class BlockLogic : MonoBehaviour
                 Destroy(damageSource.transform.parent.gameObject);
             }
         }
+        
     }    
 
     void ChangeBlockAppearanceOnAttack() {
@@ -130,7 +132,7 @@ public class BlockLogic : MonoBehaviour
         // Called when a player enter the block
         m_player = player.GetComponent<PlayerLogic>();
         m_walkable = false;
-        m_summonable = false;        
+        m_summonable = false;
         if (m_pickUp) {
             HandleItemPickUp();
         }
