@@ -17,12 +17,22 @@ ModelImporter:
     3300002: Cylinder.001
     4300000: Cylinder.001
     4300002: Cylinder
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_Capsula
+    second: {fileID: 2100000, guid: 4720e6bba183d024f831ec0806be6d7f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_Projetil
+    second: {fileID: 2100000, guid: da47d020b3d096a4b941550de912016d, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
