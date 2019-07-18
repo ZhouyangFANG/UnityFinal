@@ -13,7 +13,9 @@ public class PlayerLogic : MonoBehaviour
 
     const float InvincibleAfterDamageTime = 2.0f;
     float m_invincibleAfterDamageTimer = 0;
-        
+
+    GameObject m_takingPowerUp; // Ready to be cast
+    WeaponLogic m_takingWeapon;
     // Start is called before the first frame update
     void Start()
     {
@@ -66,18 +68,26 @@ public class PlayerLogic : MonoBehaviour
                 Destroy(currentWeapon.gameObject);
             }
         }
-        WeaponLogic weaponLogic = Instantiate(weapon, transform).GetComponent<WeaponLogic>();
-        weaponLogic.OnAttackStart += AttackStarted;
-        weaponLogic.OnAttackFinish += AttackFinished;
+
+        m_takingWeapon = Instantiate(weapon, transform).GetComponent<WeaponLogic>();
+        m_takingWeapon.OnAttackStart += AttackStarted;
+        m_takingWeapon.OnAttackFinish += AttackFinished;
+    }
+
+    void TakePowerUp(GameObject powerUp) {
+        // Save the pickup currently
+
+        m_takingPowerUp = powerUp;
+        
     }
 
     public void takePickUp(PickUpLogic item) {
         if (item.isWeapon()) {
             TakeWeapon(item.getItemPrefab());
         } else if (item.isPowerUp()) {
-
+            TakePowerUp(item.getItemPrefab());
         } else if (item.isHp()) {
-
+            TakeHp();
         }
         Destroy(item.gameObject);
     }
@@ -98,6 +108,14 @@ public class PlayerLogic : MonoBehaviour
 
     void AttackFinished() {
         GetComponent<PlayerController>().m_isAttacking = false;
+    }
+
+    public void castCurrentTakingPowerUp() {
+        if (m_takingPowerUp) {
+            GameObject powerUp = Instantiate(m_takingPowerUp, transform);
+            powerUp.GetComponent<PowerUpLogic>().cast();
+            m_takingPowerUp = null;
+        }
     }
 
 }

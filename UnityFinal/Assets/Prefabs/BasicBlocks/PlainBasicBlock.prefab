@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 9024503095156942747}
   - component: {fileID: 9024503095156942748}
   - component: {fileID: 9024503095156942749}
-  - component: {fileID: 8570426788293214351}
   - component: {fileID: 8808355056555296972}
+  - component: {fileID: 8570426788293214351}
   - component: {fileID: 1698169352229429501}
   - component: {fileID: 7651702897696188226}
   m_Layer: 0
@@ -81,6 +81,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &8808355056555296972
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9024503095156942750}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 4.69, z: 1}
+  m_Center: {x: -0.0000043660407, y: 0.52, z: -0.0000026226046}
 --- !u!114 &8570426788293214351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,19 +110,6 @@ MonoBehaviour:
   m_summonable: 0
   onAttackMesh: {fileID: 4300440, guid: 353b40c6a1ff7dd469b9d1e4dc0f13a8, type: 3}
   isEdge: 00000000
---- !u!65 &8808355056555296972
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9024503095156942750}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 4.69, z: 1}
-  m_Center: {x: -0.0000043660407, y: 0.52, z: -0.0000026226046}
 --- !u!114 &1698169352229429501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,3 +140,7 @@ MonoBehaviour:
   - {fileID: 1903056498490387012, guid: 0b86fd230f08b38469899cb4ceb1045d, type: 3}
   - {fileID: 1903056498490387012, guid: 54a4ee0facab8e84482a9021dff4f430, type: 3}
   - {fileID: 1903056498490387012, guid: c4f77e6f728e54b43a5fa683a1d10e60, type: 3}
+  - {fileID: 1903056498490387012, guid: c5e1d321760b5bf48b4809dd0ebe224a, type: 3}
+  - {fileID: 1903056498490387012, guid: c5e1d321760b5bf48b4809dd0ebe224a, type: 3}
+  - {fileID: 1903056498490387012, guid: c5e1d321760b5bf48b4809dd0ebe224a, type: 3}
+  - {fileID: 1903056498490387012, guid: c5e1d321760b5bf48b4809dd0ebe224a, type: 3}

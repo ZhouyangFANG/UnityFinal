@@ -18,19 +18,21 @@ public enum PlayerID {
 
 public class PlayerController : MonoBehaviour
 {
-    float MoveCoolDownTime = 0.15f;    
+    float DefaultMoveCoolDownTime = 0.15f;    
+    float MoveCoolDownTime;    
+    
     float m_moveCoolDownTimer = 0;
     
     PlayerID m_playerID;
 
     private int xIndex;
     private int zIndex;
-    public bool m_isAttacking;
-
+    public bool m_isAttacking;    
     // Start is called before the first frame update
     void Start()
     {
         m_isAttacking = false;
+        MoveCoolDownTime = DefaultMoveCoolDownTime;        
         m_moveCoolDownTimer = MoveCoolDownTime;
     }
 
@@ -105,6 +107,9 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (Input.GetButtonDown(m_playerID.ToString() + "_CastPowerUp")) {
+            GetComponent<PlayerLogic>().castCurrentTakingPowerUp();
+        }
 
     }
 
@@ -176,11 +181,16 @@ public class PlayerController : MonoBehaviour
         
         if (GetComponentInChildren<WeaponLogic>()) {
             // Call the attack funcion in the weapon
-            return GetComponentInChildren<WeaponLogic>().TryAttack();
+            return GetComponentInChildren<WeaponLogic>().tryAttack();
         }
         return false;
     }
 
+    public void applySpeedUp() {
+        MoveCoolDownTime = DefaultMoveCoolDownTime / 2.0f;
+    }
     
-    
+    public void resetSpeed() {
+        MoveCoolDownTime = DefaultMoveCoolDownTime;
+    }
 }

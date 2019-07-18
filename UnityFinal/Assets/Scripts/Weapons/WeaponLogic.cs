@@ -32,7 +32,7 @@ public class WeaponLogic : MonoBehaviour
         m_attackCoolDownTimer += Time.deltaTime;
     }
 
-    public bool TryAttack()
+    public bool tryAttack()
     {
         // Try attack, return true if player successfully attack
         if (m_attackCoolDownTimer > AttackCoolDownTime) {
@@ -50,8 +50,9 @@ public class WeaponLogic : MonoBehaviour
         }
     }
 
-    public void FinishAttack() {
+    void FinishAttack() {
         // Usually Animation Events
+        // After that the player can move see PlayerLogic
         if(OnAttackFinish != null) {
             OnAttackFinish();
         }

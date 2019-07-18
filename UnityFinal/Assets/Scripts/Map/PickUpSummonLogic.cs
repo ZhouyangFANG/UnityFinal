@@ -6,7 +6,7 @@ public class PickUpSummonLogic : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField]
-    GameObject [] PickUpsPrefabList;
+    GameObject [] PickUpsPrefabList = null;
     BlockLogic block;
     void Start()
     {
