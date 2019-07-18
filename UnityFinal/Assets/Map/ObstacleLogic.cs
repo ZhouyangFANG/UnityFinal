@@ -32,10 +32,7 @@ public class ObstacleLogic : MonoBehaviour
     }
 
     public void takeDamage(GameObject damageSource) {
-        Hp -= damageSource.GetComponent<DamageSourceLogic>().getDamage();
-        if (Hp == 0) {
-            startDestroy();
-        }
+        Hp -= damageSource.GetComponent<DamageSourceLogic>().getDamage();        
     }
 
     void Destroy() {

@@ -28,7 +28,7 @@ public class RandomEventLogic : MonoBehaviour
         int num = Random.Range(10, 30);
         for(int i = 0; i < num; i++) {
             GameObject block = map.getBlock(Random.Range(0, map.MapXBlockNum), Random.Range(0, map.MapZBlockNum));
-            block.GetComponent<ObstacleSummonLogic>().swapObstacleState();
+            block.GetComponent<ObstacleSummonLogic>().swapRandomObstacleState();
         }
     }
 

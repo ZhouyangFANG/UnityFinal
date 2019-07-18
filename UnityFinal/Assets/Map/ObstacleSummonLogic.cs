@@ -6,7 +6,9 @@ using UnityEngine;
 public class ObstacleSummonLogic : MonoBehaviour
 {
     [SerializeField]
-    GameObject obstaclePrefab = null;    
+    GameObject obstacleDestroyablePrefab = null;    
+    [SerializeField]
+    GameObject obstacleNotDestroyablePrefab = null;    
     BlockLogic block;
     // Start is called before the first frame update
     void Start()
@@ -20,11 +22,11 @@ public class ObstacleSummonLogic : MonoBehaviour
 
     }
 
-    public void summonObstacle() {
+    public void summonObstacle(GameObject obstacle) {
         // summon the obstacle with given prefab
         // the prefab should be animated itself
         if (block.isSummonable()) {            
-            block.setObstacle(Instantiate(obstaclePrefab, transform)); // The prefab should play the summon animation automatically
+            block.setObstacle(Instantiate(obstacle, transform)); // The prefab should play the summon animation automatically
         }
         
     }
@@ -38,14 +40,18 @@ public class ObstacleSummonLogic : MonoBehaviour
         }
     }
 
-    public void swapObstacleState() {
+    public void swapRandomObstacleState() {
         // Swap between State, Used in RandomEventManager
         if (block.getObstacle()) {
             if (block.getObstacle().GetComponent<ObstacleLogic>().isSteady()) {
                 destroyObstacle();
             }
         } else {
-            summonObstacle();
+            if (Random.Range(0, 3) == 0) {
+                summonObstacle(obstacleNotDestroyablePrefab);
+            } else {
+                summonObstacle(obstacleDestroyablePrefab);
+            }
         }
     }
 }
