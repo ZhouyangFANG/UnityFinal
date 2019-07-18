@@ -65,13 +65,14 @@
      <Compile Include="Assets\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Misc\LookAtCamera.cs" />
      <Compile Include="Assets\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Weapon_Scripts\AutomaticGunScriptLPFP.cs" />
      <Compile Include="Assets\Low Poly FPS Pack - Free (Sample)\Components\Scripts\Weapon_Scripts\HandgunScriptLPFP.cs" />
-     <Compile Include="Assets\Scripts\Items\ItemLogic.cs" />
+     <Compile Include="Assets\Scripts\Items\PickUpLogic.cs" />
      <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
      <Compile Include="Assets\Scripts\Managers\LocalizationManager.cs" />
      <Compile Include="Assets\Scripts\Map\BlockLogic.cs" />
      <Compile Include="Assets\Scripts\Map\MapLogic.cs" />
      <Compile Include="Assets\Scripts\Map\ObstacleLogic.cs" />
      <Compile Include="Assets\Scripts\Map\ObstacleSummonLogic.cs" />
+     <Compile Include="Assets\Scripts\Map\PickUpSummonLogic.cs" />
      <Compile Include="Assets\Scripts\Map\RandomEventLogic.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerLogic.cs" />

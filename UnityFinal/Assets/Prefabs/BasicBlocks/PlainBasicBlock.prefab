@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8570426788293214351}
   - component: {fileID: 8808355056555296972}
   - component: {fileID: 1698169352229429501}
+  - component: {fileID: 7651702897696188226}
   m_Layer: 0
   m_Name: PlainBasicBlock
   m_TagString: Untagged
@@ -92,6 +93,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c31052eccf8ba4408b2f2a7d52d48cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_walkable: 0
+  m_summonable: 0
   onAttackMesh: {fileID: 4300440, guid: 353b40c6a1ff7dd469b9d1e4dc0f13a8, type: 3}
   isEdge: 00000000
 --- !u!65 &8808355056555296972
@@ -121,3 +124,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstaclePrefab: {fileID: 7745208152211360485, guid: f9ee3cfcceda9e14694bf3524e509b1f,
     type: 3}
+--- !u!114 &7651702897696188226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9024503095156942750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92c597c0c3d80d04ab5c0847c519fb38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PickUpsPrefabList:
+  - {fileID: 1903056498490387012, guid: 0b86fd230f08b38469899cb4ceb1045d, type: 3}
+  - {fileID: 1903056498490387012, guid: 54a4ee0facab8e84482a9021dff4f430, type: 3}
+  - {fileID: 1903056498490387012, guid: c4f77e6f728e54b43a5fa683a1d10e60, type: 3}
