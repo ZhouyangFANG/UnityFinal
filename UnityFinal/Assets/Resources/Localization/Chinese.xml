@@ -1,0 +1,74 @@
+<Localization>
+  <Entry>
+    <Key>Title</Key>
+    <Value>游戏名称</Value>
+  </Entry>
+  <Entry>
+    <Key>Start</Key>
+    <Value>开始</Value>
+  </Entry>
+  <Entry>
+    <Key>Options</Key>
+    <Value>选项</Value>
+  </Entry>
+  <Entry>
+    <Key>Help</Key>
+    <Value>帮助</Value>
+  </Entry>
+  <Entry>
+    <Key>Quit</Key>
+    <Value>退出</Value>
+  </Entry>
+  <Entry>
+    <Key>Option Menu</Key>
+    <Value>选项菜单</Value>
+  </Entry>
+  <Entry>
+    <Key>Language</Key>
+    <Value>语言</Value>
+  </Entry>
+  <Entry>
+    <Key>English</Key>
+    <Value>英语</Value>
+  </Entry>
+  <Entry>
+    <Key>Chinese</Key>
+    <Value>中文</Value>
+  </Entry>
+  <Entry>
+    <Key>Player</Key>
+    <Value>玩家</Value>
+  </Entry>
+  <Entry>
+    <Key>Help Menu</Key>
+    <Value>帮助菜单</Value>
+  </Entry>
+  <Entry>
+    <Key>Weapon</Key>
+    <Value>武器</Value>
+  </Entry>
+  <Entry>
+    <Key>Item</Key>
+    <Value>道具</Value>
+  </Entry>
+  <Entry>
+    <Key>Operating</Key>
+    <Value>操作</Value>
+  </Entry>
+  <Entry>
+    <Key>Back</Key>
+    <Value>返回</Value>
+  </Entry>
+  <Entry>
+    <Key>Game Pause</Key>
+    <Value>游戏暂停</Value>
+  </Entry>
+  <Entry>
+    <Key>Restart</Key>
+    <Value>重新开始</Value>
+  </Entry>
+  <Entry>
+    <Key>Main Menu</Key>
+    <Value>主菜单</Value>
+  </Entry>
+</Localization>

@@ -22,6 +22,16 @@ public class PlayerController : MonoBehaviour
     float MoveCoolDownTime;    
     
     float m_moveCoolDownTimer = 0;
+    float m_horizontalFireInput;              
+    float m_verticalFireInput;
+    bool isHorizontalFiring;
+    bool isVerticalFiring;
+
+    float m_horizontalMoveInput;              
+    float m_verticalMoveInput;
+    bool isHorizontalMoving;
+    bool isVerticalMoving;
+    bool isMoved = false;    
     
     
     PlayerID m_playerID;
@@ -59,18 +69,22 @@ public class PlayerController : MonoBehaviour
             m_moveCoolDownTimer += Time.deltaTime;
         }
 
-        float m_horizontalFireInput = Input.GetAxisRaw(m_playerID.ToString() + "_HorizontalFire");                
-        float m_verticalFireInput = Input.GetAxisRaw(m_playerID.ToString() + "_VerticalFire");
-        bool isHorizontalFiring = Input.GetButton(m_playerID.ToString() + "_HorizontalFire");
-        bool isVerticalFiring = Input.GetButton(m_playerID.ToString() + "_VerticalFire");
+        m_horizontalFireInput = Input.GetAxisRaw(m_playerID.ToString() + "_HorizontalFire");                
+        m_verticalFireInput = Input.GetAxisRaw(m_playerID.ToString() + "_VerticalFire");
+        isHorizontalFiring = Input.GetButton(m_playerID.ToString() + "_HorizontalFire");
+        isVerticalFiring = Input.GetButton(m_playerID.ToString() + "_VerticalFire");
 
-        float m_horizontalMoveInput = Input.GetAxisRaw(m_playerID.ToString() + "_HorizontalMove");                
-        float m_verticalMoveInput = Input.GetAxisRaw(m_playerID.ToString() + "_VerticalMove");
-        bool isHorizontalMoving = Input.GetButton(m_playerID.ToString() + "_HorizontalMove");
-        bool isVerticalMoving = Input.GetButton(m_playerID.ToString() + "_VerticalMove");
-        bool isMoved = false;     
+        m_horizontalMoveInput = Input.GetAxisRaw(m_playerID.ToString() + "_HorizontalMove");                
+        m_verticalMoveInput = Input.GetAxisRaw(m_playerID.ToString() + "_VerticalMove");
+        isHorizontalMoving = Input.GetButton(m_playerID.ToString() + "_HorizontalMove");
+        isVerticalMoving = Input.GetButton(m_playerID.ToString() + "_VerticalMove");
+        isMoved = false;
 
+    }
 
+    // Update is called once per frame
+    void FixedUpdate()
+    {
         if (!(isHorizontalFiring && isVerticalFiring)) { // Prevent Vertical Fire            
             if (isHorizontalFiring) {
                 if (m_horizontalFireInput > 0) {
@@ -120,18 +134,10 @@ public class PlayerController : MonoBehaviour
             }
         }       
 
-        
 
         if (Input.GetButtonDown(m_playerID.ToString() + "_CastPowerUp")) {
             GetComponent<PlayerLogic>().castCurrentTakingPowerUp();
         }
-
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-
     }
     
     bool TryMove(Direction direction) {
