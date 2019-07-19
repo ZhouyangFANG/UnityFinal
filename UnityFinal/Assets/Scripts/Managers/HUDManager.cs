@@ -18,8 +18,8 @@ public class HUDManager : MonoBehaviour
     GameObject [] hp;
     int m_hp;
     int m_weaponID;
+    int m_powerUpID;
 
-    [SerializeField]
     GameObject m_weapon;
     Texture2D Transparent;
     Texture2D Dagger;
@@ -28,6 +28,16 @@ public class HUDManager : MonoBehaviour
     Texture2D Pistol;
     Texture2D Bow;
     Texture2D Wand;
+    
+    GameObject m_powerUp;
+    Texture2D Inky;
+    Texture2D Lambert;
+    Texture2D Mine;
+    Texture2D Missile;
+    Texture2D Poison;
+    Texture2D Shield;
+    Texture2D SpeedUp;
+    Texture2D Wall;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +61,15 @@ public class HUDManager : MonoBehaviour
         Pistol = (Texture2D)Resources.Load("Pistol");
         Bow = (Texture2D)Resources.Load("Bow");
         Wand = (Texture2D)Resources.Load("Wand");
+
+        Inky = (Texture2D)Resources.Load("Inky");
+        Lambert = (Texture2D)Resources.Load("Lambert");
+        Mine = (Texture2D)Resources.Load("Mine");
+        Missile = (Texture2D)Resources.Load("Missile");
+        Poison = (Texture2D)Resources.Load("Poison");
+        Shield = (Texture2D)Resources.Load("Shield");
+        SpeedUp = (Texture2D)Resources.Load("SpeedUp");
+        Wall = (Texture2D)Resources.Load("Wall");
     }
 
     // Update is called once per frame
@@ -72,8 +91,10 @@ public class HUDManager : MonoBehaviour
                 playerID = (int)m_player[i].GetComponent<PlayerLogic>().getPlayerID();
                 m_hp = (int)m_player[i].GetComponent<PlayerLogic>().GetHP();
                 m_weaponID = (int)m_player[i].GetComponent<PlayerLogic>().GetWeaponID();
+                m_powerUpID = (int)m_player[i].GetComponent<PlayerLogic>().GetPowerUpID();
                 UpdateHP(Player_HUD[playerID], m_hp);
                 UpdateWeapon(Player_HUD[playerID], m_weaponID);
+                UpdatePowerUp(Player_HUD[playerID], m_powerUpID);
             }
         }
     }
@@ -119,6 +140,41 @@ public class HUDManager : MonoBehaviour
                 break;
             case 6:
                 m_weapon.GetComponent<RawImage>().texture = Wand;
+                break;
+        }
+    }
+
+    void UpdatePowerUp(GameObject player_HUD, int powerUpI)
+    {
+        m_powerUp = player_HUD.transform.Find("PowerUp").gameObject;
+        switch(powerUpI)
+        {
+            case 0:
+                m_powerUp.GetComponent<RawImage>().texture = Transparent;
+                break;
+            case 1:
+                m_powerUp.GetComponent<RawImage>().texture = Inky;
+                break;
+            case 2:
+                m_powerUp.GetComponent<RawImage>().texture = Lambert;
+                break;
+            case 3:
+                m_powerUp.GetComponent<RawImage>().texture = Mine;
+                break;
+            case 4:
+                m_powerUp.GetComponent<RawImage>().texture = Missile;
+                break;
+            case 5:
+                m_powerUp.GetComponent<RawImage>().texture = Poison;
+                break;
+            case 7:
+                m_powerUp.GetComponent<RawImage>().texture = Shield;
+                break;
+            case 8:
+                m_powerUp.GetComponent<RawImage>().texture = SpeedUp;
+                break;
+            case 9:
+                m_powerUp.GetComponent<RawImage>().texture = Wall;
                 break;
         }
     }
