@@ -15,7 +15,7 @@ public class RandomEventLogic : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (Time.frameCount % 200 == 100) {
             RandomChangeObstacleState();
