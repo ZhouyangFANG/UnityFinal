@@ -23,7 +23,6 @@ public class BulletLogic : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.position = transform.position + transform.up * Time.deltaTime * bulletSpeed * transform.localScale.x; // Move Forward
-        Debug.Log("Bullet Fly");
+        transform.position = transform.position + transform.up * Time.deltaTime * bulletSpeed * transform.localScale.x; // Move Forward        
     }
 }
