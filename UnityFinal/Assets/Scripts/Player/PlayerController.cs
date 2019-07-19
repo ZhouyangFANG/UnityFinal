@@ -252,7 +252,7 @@ public class PlayerController : MonoBehaviour
         if (block.isWalkable() || (isGhost && block.getPlayer() == null)) {
             BlockLogic cur_block = MapLogic.Instance.getBlock(xIndex, zIndex).GetComponent<BlockLogic>(); // current block
             cur_block.resetPlayer();
-            if (isGhost && cur_block.getObstacle()) {
+            if (cur_block.getObstacle()) {
                 // if ghost than the walkable will not be set to true
                 cur_block.setObstacle(cur_block.getObstacle().gameObject);
             }
