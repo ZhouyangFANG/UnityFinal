@@ -9,13 +9,15 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     GameObject m_pauseMenu;
-
+    [SerializeField]
+    GameObject m_eventSystem;
     public static GameManager Instance;
 
     void Awake() {
         if (Instance == null) {
             Instance = this;
             DontDestroyOnLoad(this);
+            DontDestroyOnLoad(m_eventSystem);
         } else {
             Destroy(this);
             return;
