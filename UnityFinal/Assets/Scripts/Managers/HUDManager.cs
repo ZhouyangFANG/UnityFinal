@@ -97,6 +97,7 @@ public class HUDManager : MonoBehaviour
     void UpdateWeapon(GameObject player_HUD, int weaponID)
     {
         m_weapon = player_HUD.transform.Find("Weapon").gameObject;
+        Debug.Log(m_weapon.GetComponent<RawImage>().texture);
         switch(weaponID)
         {
             case 0:
