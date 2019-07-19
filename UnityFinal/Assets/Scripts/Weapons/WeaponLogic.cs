@@ -8,7 +8,7 @@ public enum WeaponID {
     Claymore = 2,
     Spear = 3,
     Pistol = 4,
-    Rifle = 5,
+    Bow = 5,
     Wand = 6
 }
 

@@ -26,7 +26,7 @@ public class HUDManager : MonoBehaviour
     Texture2D Claymore;
     Texture2D Spear;
     Texture2D Pistol;
-    Texture2D Rifle;
+    Texture2D Bow;
     Texture2D Wand;
 
     // Start is called before the first frame update
@@ -49,7 +49,7 @@ public class HUDManager : MonoBehaviour
         Claymore = (Texture2D)Resources.Load("Claymore");
         Spear = (Texture2D)Resources.Load("Spear");
         Pistol = (Texture2D)Resources.Load("Pistol");
-        Rifle = (Texture2D)Resources.Load("Rifle");
+        Bow = (Texture2D)Resources.Load("Bow");
         Wand = (Texture2D)Resources.Load("Wand");
     }
 
@@ -97,7 +97,6 @@ public class HUDManager : MonoBehaviour
     void UpdateWeapon(GameObject player_HUD, int weaponID)
     {
         m_weapon = player_HUD.transform.Find("Weapon").gameObject;
-        Debug.Log(m_weapon.GetComponent<RawImage>().texture);
         switch(weaponID)
         {
             case 0:
@@ -116,7 +115,7 @@ public class HUDManager : MonoBehaviour
                 m_weapon.GetComponent<RawImage>().texture = Pistol;
                 break;
             case 5:
-                m_weapon.GetComponent<RawImage>().texture = Rifle;
+                m_weapon.GetComponent<RawImage>().texture = Bow;
                 break;
             case 6:
                 m_weapon.GetComponent<RawImage>().texture = Wand;
