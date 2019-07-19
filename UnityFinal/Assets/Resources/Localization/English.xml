@@ -1,0 +1,74 @@
+<Localization>
+  <Entry>
+    <Key>Title</Key>
+    <Value>Game Name</Value>
+  </Entry>
+  <Entry>
+    <Key>Start</Key>
+    <Value>Start</Value>
+  </Entry>
+  <Entry>
+    <Key>Options</Key>
+    <Value>Options</Value>
+  </Entry>
+  <Entry>
+    <Key>Help</Key>
+    <Value>Help</Value>
+  </Entry>
+  <Entry>
+    <Key>Quit</Key>
+    <Value>Quit</Value>
+  </Entry>
+  <Entry>
+    <Key>Option Menu</Key>
+    <Value>Option Menu</Value>
+  </Entry>
+  <Entry>
+    <Key>Language</Key>
+    <Value>Language</Value>
+  </Entry>
+  <Entry>
+    <Key>English</Key>
+    <Value>English</Value>
+  </Entry>
+  <Entry>
+    <Key>Chinese</Key>
+    <Value>Chinese</Value>
+  </Entry>
+  <Entry>
+    <Key>Player</Key>
+    <Value>Player</Value>
+  </Entry>
+  <Entry>
+    <Key>Help Menu</Key>
+    <Value>Help Menu</Value>
+  </Entry>
+  <Entry>
+    <Key>Weapon</Key>
+    <Value>Weapon</Value>
+  </Entry>
+  <Entry>
+    <Key>Item</Key>
+    <Value>Item</Value>
+  </Entry>
+  <Entry>
+    <Key>Operating</Key>
+    <Value>Operating</Value>
+  </Entry>
+  <Entry>
+    <Key>Back</Key>
+    <Value>Back</Value>
+  </Entry>
+  <Entry>
+    <Key>Game Pause</Key>
+    <Value>Game Pause</Value>
+  </Entry>
+  <Entry>
+    <Key>Restart</Key>
+    <Value>Restart</Value>
+  </Entry>
+  <Entry>
+    <Key>Main Menu</Key>
+    <Value>Main Menu</Value>
+  </Entry>
+</Localization>
