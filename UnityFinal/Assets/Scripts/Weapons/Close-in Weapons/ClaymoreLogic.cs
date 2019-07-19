@@ -9,7 +9,7 @@ public class ClaymoreLogic : MonoBehaviour
     [SerializeField]
     int Damage = 1;
     [SerializeField]
-    DamageSourceLogic m_damageSource = null;
+    DamageSourceLogic[] m_damageSource = null;
 
 
     // Start is called before the first frame update
@@ -17,7 +17,10 @@ public class ClaymoreLogic : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         GetComponent<WeaponLogic>().OnAttackStart += Attack; // When OnAttackStart is called, Attack is called
-        m_damageSource.gameObject.SetActive(false); // Deactivate the DamageSource at default
+        for (int index = 0; index < m_damageSource.Length; ++ index) {
+            m_damageSource[index].gameObject.SetActive(false); // Deactivate the DamageSource at default
+        }
+        
     }
 
     void Attack() {
@@ -26,16 +29,18 @@ public class ClaymoreLogic : MonoBehaviour
 
     void activateDamageSource() {
         // Animation Events
-        
-        m_damageSource.gameObject.SetActive(true);
-        m_damageSource.InitDamageSourceInfo(GetComponentInParent<PlayerLogic>().getPlayerID(), Damage); 
-        // Initialize the damage information after the DamageSource is activated
+        for (int index = 0; index < m_damageSource.Length; ++ index) {
+            m_damageSource[index].gameObject.SetActive(true);
+            m_damageSource[index].InitDamageSourceInfo(GetComponentInParent<PlayerLogic>().getPlayerID(), Damage); 
+            // Initialize the damage information after the DamageSource is activated
+        }
     }
 
     void deactivateDamageSource() {
         // Animation Events
-        
-        m_damageSource.gameObject.SetActive(false);             
+        for (int index = 0; index < m_damageSource.Length; ++ index) {
+            m_damageSource[index].gameObject.SetActive(false);  
+        }           
     }
 
 
