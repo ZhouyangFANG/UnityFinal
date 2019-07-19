@@ -140,11 +140,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PickUpsPrefabList:
+  - {fileID: 1903056498490387012, guid: 0c07b802e316e5c4782d7e5059a40556, type: 3}
   - {fileID: 1903056498490387012, guid: be36b811c49b8428cb21ac1b0452f006, type: 3}
   - {fileID: 1903056498490387012, guid: 0b86fd230f08b38469899cb4ceb1045d, type: 3}
-  - {fileID: 1903056498490387012, guid: 54a4ee0facab8e84482a9021dff4f430, type: 3}
+  - {fileID: 1903056498490387012, guid: aa4f222d28cf2654e8b7d44f9daf6245, type: 3}
   - {fileID: 1903056498490387012, guid: c4f77e6f728e54b43a5fa683a1d10e60, type: 3}
   - {fileID: 1903056498490387012, guid: 7408fe0813e5a4a6083f62c775be69bc, type: 3}
+  - {fileID: 1903056498490387012, guid: c5e1d321760b5bf48b4809dd0ebe224a, type: 3}
+  - {fileID: 1903056498490387012, guid: 16c5ce2358b47fc4fb63422d9dda8b1c, type: 3}
+  - {fileID: 1903056498490387012, guid: d969450e7eae5b64a83b5b8bee032116, type: 3}
+  - {fileID: 1903056498490387012, guid: 54a4ee0facab8e84482a9021dff4f430, type: 3}
 --- !u!114 &7911918368669889037
 MonoBehaviour:
   m_ObjectHideFlags: 0
