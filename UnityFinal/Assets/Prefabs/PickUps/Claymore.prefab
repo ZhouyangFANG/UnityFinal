@@ -153,7 +153,6 @@ GameObject:
   - component: {fileID: 712883407078958602}
   - component: {fileID: 7003438991111900644}
   - component: {fileID: 6016703276658857905}
-  - component: {fileID: 1508782085915143973}
   m_Layer: 0
   m_Name: Claymore
   m_TagString: Untagged
@@ -220,22 +219,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!95 &1508782085915143973
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3000703253233732242}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: abe1aac02f797294bb58651b029b1aaf, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
