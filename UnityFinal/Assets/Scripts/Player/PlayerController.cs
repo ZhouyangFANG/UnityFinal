@@ -168,11 +168,9 @@ public class PlayerController : MonoBehaviour
             break;
         }
         m_direction = direction;
-
+        bool isGhost = GetComponentInChildren<GhostLogic>() != null;
         BlockLogic block = MapLogic.Instance.getBlock(new_x_index, new_z_index).GetComponent<BlockLogic>(); // The new block that player is trying to accessing
-        if (block.isWalkable()) {
-            BlockLogic cur_block = MapLogic.Instance.getBlock(xIndex, zIndex).GetComponent<BlockLogic>(); // current block
-
+        if (block.isWalkable() || (isGhost && block.getPlayer() == null)) {                        
             if (jumpState) {
                 animator.SetTrigger("Jump1");
             } else {
@@ -248,10 +246,14 @@ public class PlayerController : MonoBehaviour
         }        
 
         BlockLogic block = MapLogic.Instance.getBlock(new_x_index, new_z_index).GetComponent<BlockLogic>(); // The new block that player is trying to accessing
-        
-        if (block.isWalkable()) {
-            BlockLogic cur_block = MapLogic.Instance.getBlock(xIndex, zIndex).GetComponent<BlockLogic>(); // current block     
+        bool isGhost = GetComponentInChildren<GhostLogic>() != null;
+        if (block.isWalkable() || (isGhost && block.getPlayer() == null)) {
+            BlockLogic cur_block = MapLogic.Instance.getBlock(xIndex, zIndex).GetComponent<BlockLogic>(); // current block
             cur_block.resetPlayer();
+            if (isGhost && cur_block.getObstacle()) {
+                // if ghost than the walkable will not be set to true
+                cur_block.setObstacle(cur_block.getObstacle().gameObject);
+            }
             xIndex = new_x_index;
             zIndex = new_z_index;
             
