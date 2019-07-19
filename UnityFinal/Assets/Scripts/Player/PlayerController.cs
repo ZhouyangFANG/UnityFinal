@@ -266,6 +266,11 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("SpeedMultiplier", 1.4f);
         MoveCoolDownTime = DefaultMoveCoolDownTime * 1 / 1.4f;
     }
+
+    public void applySpeedDown() {
+        animator.SetFloat("SpeedMultiplier", 0.7f);
+        MoveCoolDownTime = DefaultMoveCoolDownTime * 1 / 0.7f;
+    }
     
     public void resetSpeed() {
         animator.SetFloat("SpeedMultiplier", 1);

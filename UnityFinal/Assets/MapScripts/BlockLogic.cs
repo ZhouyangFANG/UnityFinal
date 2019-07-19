@@ -34,6 +34,8 @@ public class BlockLogic : MonoBehaviour
     private PlayerLogic m_player;
     private ObstacleLogic m_obstacle;
     private PickUpLogic m_pickUp;
+    private TrapLogic m_trap;
+
     public bool [] isEdge = new bool [4];
     
     void Start()
@@ -137,6 +139,9 @@ public class BlockLogic : MonoBehaviour
         if (m_pickUp) {
             HandleItemPickUp();
         }
+        if (m_trap && m_trap.isSteady()) {
+            m_trap.hitPlayer(player);
+        }
     }
     public void resetPlayer() {
         // Called when a player leave the block
@@ -188,4 +193,13 @@ public class BlockLogic : MonoBehaviour
         return m_walkable;
     }
 
+    public void setTrap(GameObject trap) {
+        m_trap = trap.GetComponent<TrapLogic>();
+        m_summonable = false;
+        m_walkable = true;
+    }
+
+    public TrapLogic getTrap() {
+        return m_trap;
+    }
 }

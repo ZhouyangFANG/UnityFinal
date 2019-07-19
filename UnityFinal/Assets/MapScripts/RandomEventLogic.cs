@@ -20,12 +20,13 @@ public class RandomEventLogic : MonoBehaviour
         if (Time.frameCount % 500 == 100) {
             RandomChangeObstacleState();
             RandomGenerateItem();
+            RandomChangeTrapState();
         }
     }
 
     void RandomChangeObstacleState() {
         
-        int num = Random.Range(10, 30);
+        int num = Random.Range(5, 10);
         for(int i = 0; i < num; i++) {
             GameObject block = map.getBlock(Random.Range(0, map.MapXBlockNum), Random.Range(0, map.MapZBlockNum));
             block.GetComponent<ObstacleSummonLogic>().swapRandomObstacleState();
@@ -39,5 +40,13 @@ public class RandomEventLogic : MonoBehaviour
             GameObject block = map.getBlock(Random.Range(0, map.MapXBlockNum), Random.Range(0, map.MapZBlockNum));
             successFlag = block.GetComponent<PickUpSummonLogic>().summonRandomItem();
         }
+    }
+
+    void RandomChangeTrapState() {
+        int num = Random.Range(5, 10);
+        for(int i = 0; i < num; i++) {
+            GameObject block = map.getBlock(Random.Range(0, map.MapXBlockNum), Random.Range(0, map.MapZBlockNum));
+            block.GetComponent<TrapSummonLogic>().swapRandomTrapState();
+        }        
     }
 }

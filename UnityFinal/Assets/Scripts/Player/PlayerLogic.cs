@@ -99,6 +99,19 @@ public class PlayerLogic : MonoBehaviour
         }
     }
 
+    public void takeDamage(int damage) {
+        // Prevent damage to self (if sourcePlayerId is set)
+        if (m_invincibleAfterDamageTimer >= InvincibleAfterDamageTime) {
+            m_invincibleAfterDamageTimer = 0.0f;
+            // Update the player appearance here (invincible)
+            Debug.Log(m_playerID.ToString() + " is damaged for 1 hp");                
+            m_hp -= damage;
+            if (m_hp <= 0) {
+                Death();
+            }
+        }
+    }
+
     void Death() {
         Destroy(gameObject);
     }
@@ -159,10 +172,14 @@ public class PlayerLogic : MonoBehaviour
 
     public void castCurrentTakingPowerUp() {
         if (m_takingPowerUp) {
-            GameObject powerUp = Instantiate(m_takingPowerUp, transform);
-            powerUp.GetComponent<PowerUpLogic>().cast();
+            takeEffector(m_takingPowerUp);
             m_takingPowerUp = null;
         }
+    }
+
+    public void takeEffector(GameObject powerUpEffector) {
+        GameObject powerUp = Instantiate(powerUpEffector, transform);
+        powerUp.GetComponent<PowerUpLogic>().cast();
     }
 
 }
