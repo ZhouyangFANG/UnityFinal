@@ -34,8 +34,8 @@ public class HUDManager : MonoBehaviour
     {
         m_gameManager = GameObject.Find("GameManager");
         m_playernum = m_gameManager.GetComponent<GameManager>().GetPlayer();
-        Player_HUD = new GameObject[m_playernum];
-        for(int i = 0; i < 3; i++)
+        Player_HUD = new GameObject[4];
+        for(int i = 0; i < 4; i++)
         {
             Player_HUD[i] = GameObject.Find("Canvas/Player"+(i+1).ToString()+"_HUD");
             if(i < m_playernum) Player_HUD[i].SetActive(true);
