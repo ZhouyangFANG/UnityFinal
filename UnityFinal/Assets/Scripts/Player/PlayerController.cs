@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
     private int zIndex;
     public bool m_isAttacking;   
     private bool jumpState; 
- 
+    private bool isCasting;
     private bool m_isMoving;
     // Start is called before the first frame update
     void Start()
@@ -80,6 +80,8 @@ public class PlayerController : MonoBehaviour
         isHorizontalMoving = Input.GetButton(m_playerID.ToString() + "_HorizontalMove");
         isVerticalMoving = Input.GetButton(m_playerID.ToString() + "_VerticalMove");
         isMoved = false;
+
+        isCasting = Input.GetButtonDown(m_playerID.ToString() + "_CastPowerUp");
     }
 
     // Update is called once per frame
@@ -133,7 +135,7 @@ public class PlayerController : MonoBehaviour
         }       
 
 
-        if (Input.GetButtonDown(m_playerID.ToString() + "_CastPowerUp")) {
+        if (isCasting) {
             GetComponent<PlayerLogic>().castCurrentTakingPowerUp();
         }
     }
