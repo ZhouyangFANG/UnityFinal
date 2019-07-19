@@ -1337,18 +1337,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 2eb7d917287dd473496e9ee8187d5b5b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.8908999
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 2eb7d917287dd473496e9ee8187d5b5b, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.8908999
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 2eb7d917287dd473496e9ee8187d5b5b, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.8908999
-      objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 2eb7d917287dd473496e9ee8187d5b5b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.0334
@@ -1404,6 +1392,18 @@ PrefabInstance:
     - target: {fileID: 400004, guid: 2eb7d917287dd473496e9ee8187d5b5b, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.012172185
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 2eb7d917287dd473496e9ee8187d5b5b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.8908999
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 2eb7d917287dd473496e9ee8187d5b5b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.8908999
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 2eb7d917287dd473496e9ee8187d5b5b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.8908999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2eb7d917287dd473496e9ee8187d5b5b, type: 3}
@@ -1508,7 +1508,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &146132482
 RectTransform:
   m_ObjectHideFlags: 0

@@ -52,6 +52,7 @@ public class LocalizationManager : MonoBehaviour
             {
                 m_LocalizationFiles[language] = textAsset;
                 Debug.Log("Text Asset: " + textAsset.name);
+                
             }
             else
             {
