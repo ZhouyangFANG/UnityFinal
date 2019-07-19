@@ -595,6 +595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_pauseMenu: {fileID: 0}
+  m_player: 2
   m_eventSystem: {fileID: 237362638}
 --- !u!4 &314572532
 Transform:
