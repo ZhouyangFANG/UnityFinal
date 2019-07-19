@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 1
-  BulletSpeed: 10
+  BulletSpeed: 20
   shootPosLeft: {fileID: 1046965163366696602}
   shootPosMid: {fileID: 8739769643726674693}
   shootPosRight: {fileID: 7992868530453936279}

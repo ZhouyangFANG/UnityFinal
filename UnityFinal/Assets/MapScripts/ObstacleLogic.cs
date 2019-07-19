@@ -7,7 +7,8 @@ public class ObstacleLogic : MonoBehaviour
 {
     [SerializeField]
     int Hp = -1; // the count of hit the obstacle required to be destroy, negative number means cannot destroyed by player
-
+    [SerializeField]
+    bool isDestroyable;
     Animator animator;
     bool m_isSteady; // Whether is animating or not
 
@@ -21,7 +22,7 @@ public class ObstacleLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Hp == 0 && m_isSteady) {
+        if (Hp <= 0 && m_isSteady && isDestroyable) {
             startDestroy();
         }
     }

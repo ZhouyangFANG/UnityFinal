@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 1
-  BulletSpeed: 1
+  BulletSpeed: 50
   shootPos: {fileID: 3358248593731527742}
   bulletPrefab: {fileID: 1325836922669442, guid: eddd5dbbd5cba0343953e804ef2e05c8,
     type: 3}

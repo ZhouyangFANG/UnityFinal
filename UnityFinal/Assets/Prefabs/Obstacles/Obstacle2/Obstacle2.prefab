@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: -1
+  isDestroyable: 0
 --- !u!95 &5773077362888969922
 Animator:
   serializedVersion: 3
