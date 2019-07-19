@@ -11,8 +11,10 @@ public class TrapLogic : MonoBehaviour
     [SerializeField]
     TrapType Type;
     [SerializeField]
-    GameObject slowDownEffector;    
+    GameObject slowDownEffector;
     PlayerID m_sourcePlayerId = PlayerID.Nobody;
+    float LifeTime = 20.0f;
+    float m_lifeTimer = 0.0f;
     Animator animator;
     bool m_isSteady;
     // Start is called before the first frame update
@@ -20,15 +22,23 @@ public class TrapLogic : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         m_isSteady = false;
-        
     }
 
     // Update is called once per frame
-    
+    private void FixedUpdate() {
+        if (m_isSteady) {
+            m_lifeTimer += Time.deltaTime;
+            if (m_lifeTimer >= LifeTime) {
+                startDestroy();                
+            }
+        }
+    }
     public void setSourcePlayer(PlayerID id) {
         m_sourcePlayerId = id;
     }
-
+    public void setLifeTime(float time) {
+        LifeTime = time;
+    }
     public void startDestroy() {
         animator.SetTrigger("Destroy");
         m_isSteady = false;

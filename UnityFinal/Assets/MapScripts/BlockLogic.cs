@@ -145,9 +145,13 @@ public class BlockLogic : MonoBehaviour
     }
     public void resetPlayer() {
         // Called when a player leave the block
-        m_player = null;
         m_walkable = true;
-        m_summonable = true;        
+        m_summonable = true;
+        if (m_player.GetComponentInChildren<PoisonTrailLogic>()) {
+            m_player.GetComponentInChildren<PoisonTrailLogic>().summonSlowDownTrail(this);
+        }
+        m_player = null;
+                
     }
     public void setObstacle(GameObject obstacle) {
         // Called when an obstacle is summoned on the block

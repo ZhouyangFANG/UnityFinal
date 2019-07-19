@@ -18,7 +18,7 @@ public class BulletLogic : MonoBehaviour
     public void InitBulletInfo(PlayerID sourcePlayer, int damage, float bullet_speed) {    
         bulletSpeed = bullet_speed;
         for (int index = 0; index < damageSource.Length; ++ index) {
-        damageSource[index].InitDamageSourceInfo(sourcePlayer, damage);
+            damageSource[index].InitDamageSourceInfo(sourcePlayer, damage);
         }
     }
 

@@ -18,7 +18,7 @@ public class MineLogic : MonoBehaviour
 
     void Cast() {
         PlayerID playerId = GetComponentInParent<PlayerLogic>().getPlayerID(); 
-        BlockLogic block = GetComponentInParent<PlayerLogic>().GetComponentInParent<BlockLogic>();
+        BlockLogic block = GetComponentInParent<PlayerLogic>().GetComponentInParent<BlockLogic>();        
         TrapLogic mine = Instantiate(MinePrefab, block.gameObject.transform).GetComponent<TrapLogic>();
         mine.setSourcePlayer(playerId);
         block.setTrap(mine.gameObject);
