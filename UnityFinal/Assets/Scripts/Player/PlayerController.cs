@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
         m_isMoving = false;
         jumpState = false;
         MoveCoolDownTime = DefaultMoveCoolDownTime;
+        m_moveCoolDownTimer = MoveCoolDownTime;
         animator = GetComponent<Animator>();
     }
 
@@ -79,7 +80,6 @@ public class PlayerController : MonoBehaviour
         isHorizontalMoving = Input.GetButton(m_playerID.ToString() + "_HorizontalMove");
         isVerticalMoving = Input.GetButton(m_playerID.ToString() + "_VerticalMove");
         isMoved = false;
-
     }
 
     // Update is called once per frame
@@ -106,7 +106,6 @@ public class PlayerController : MonoBehaviour
 
         if (!m_isAttacking && !(isHorizontalMoving && isVerticalMoving) && (m_moveCoolDownTimer >= MoveCoolDownTime)) { // Prevent Moving Diagonally
             if ( isHorizontalMoving && !m_isMoving) {
-                
                 if (m_horizontalMoveInput > 0) {
                     isMoved = TryMove(Direction.Right);
                 } else {
@@ -120,7 +119,6 @@ public class PlayerController : MonoBehaviour
             }
 
             if ( isVerticalMoving && !m_isMoving) {
-                
                 if (m_verticalMoveInput > 0) {
                     isMoved = TryMove(Direction.Up);
                 } else {

@@ -184,4 +184,18 @@ public class PlayerLogic : MonoBehaviour
         powerUp.GetComponent<PowerUpLogic>().cast();
     }
 
+    public int GetHP()
+    {
+        return m_hp;
+    }
+
+    public WeaponID GetWeaponID()
+    {
+        if(m_takingWeapon)
+        {
+            return m_takingWeapon.GetWeaponID();
+        }
+        else
+            return 0;
+    }
 }

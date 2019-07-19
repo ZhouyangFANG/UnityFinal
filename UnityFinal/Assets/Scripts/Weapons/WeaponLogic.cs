@@ -2,6 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum WeaponID {
+    None = 0,
+    Dagger = 1,
+    Claymore = 2,
+    Spear = 3,
+    Pistol = 4,
+    Rifle = 5,
+    Wand = 6
+}
+
 // The basic logic of a weapon
 // Provide convenient logic between caller and different weapon
 // All attack logic are handled in OnAttack
@@ -9,6 +19,9 @@ using UnityEngine;
 // Attack is creating DamageSource 
 public class WeaponLogic : MonoBehaviour
 {
+    [SerializeField]
+    WeaponID m_weaponID;
+
     [SerializeField]
     float AttackCoolDownTime = 1.0f;
     float m_attackCoolDownTimer = 0;
@@ -63,6 +76,11 @@ public class WeaponLogic : MonoBehaviour
         if(OnAttackFinish != null) {            
             OnAttackFinish();
         }
+    }
+
+    public WeaponID GetWeaponID()
+    {
+        return m_weaponID;
     }
 }
 

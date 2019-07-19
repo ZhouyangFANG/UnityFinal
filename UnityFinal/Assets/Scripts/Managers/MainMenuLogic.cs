@@ -119,17 +119,17 @@ public class MainMenuLogic : MonoBehaviour
 
     public void On2PlayerClicked()
     {
-        
+        m_gameManager.GetComponent<GameManager>().SetPlayer(2);
     }
 
     public void On3PlayerClicked()
     {
-        
+        m_gameManager.GetComponent<GameManager>().SetPlayer(3);
     }
 
     public void On4PlayerClicked()
     {
-        
+        m_gameManager.GetComponent<GameManager>().SetPlayer(4);
     }
 
     public void OnBackMainMenuClicked()

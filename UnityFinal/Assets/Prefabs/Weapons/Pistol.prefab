@@ -252,6 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b41039459281d82418a3a4bdbb260a71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_weaponID: 4
   AttackCoolDownTime: 0.6
   RightHandTarget: {fileID: 444745171614137735}
   LeftHandTarget: {fileID: 967036019594118183}
