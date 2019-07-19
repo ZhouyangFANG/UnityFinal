@@ -140,7 +140,7 @@ public class BlockLogic : MonoBehaviour
             HandleItemPickUp();
         }
         if (m_trap && m_trap.isSteady()) {
-            m_trap.hitPlayer(player);
+            m_trap.hitPlayer(m_player);
         }
     }
     public void resetPlayer() {

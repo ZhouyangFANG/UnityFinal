@@ -11,7 +11,8 @@ public class TrapLogic : MonoBehaviour
     [SerializeField]
     TrapType Type;
     [SerializeField]
-    GameObject slowDownEffector;
+    GameObject slowDownEffector;    
+    PlayerID m_sourcePlayerId = PlayerID.Nobody;
     Animator animator;
     bool m_isSteady;
     // Start is called before the first frame update
@@ -19,10 +20,15 @@ public class TrapLogic : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         m_isSteady = false;
+        
     }
 
     // Update is called once per frame
     
+    public void setSourcePlayer(PlayerID id) {
+        m_sourcePlayerId = id;
+    }
+
     public void startDestroy() {
         animator.SetTrigger("Destroy");
         m_isSteady = false;
@@ -41,14 +47,16 @@ public class TrapLogic : MonoBehaviour
         return m_isSteady;
     }
 
-    public void hitPlayer(GameObject player) {
-        if (Type == TrapType.Hurt) {
-            player.GetComponent<PlayerLogic>().takeDamage(1);
-            animator.SetTrigger("Trigger");
-            m_isSteady = false;
-        } else if (Type == TrapType.Slow) {
-            player.GetComponent<PlayerLogic>().takeEffector(slowDownEffector);
-            startDestroy();
-        }        
+    public void hitPlayer(PlayerLogic player) {
+        if (player.getPlayerID() != m_sourcePlayerId) {
+            if (Type == TrapType.Hurt) {
+                player.takeDamage(1);
+                animator.SetTrigger("Trigger");
+                m_isSteady = false;       
+            } else if (Type == TrapType.Slow) {
+                player.takeEffector(slowDownEffector);
+                startDestroy();
+            }        
+        }
     }
 }
