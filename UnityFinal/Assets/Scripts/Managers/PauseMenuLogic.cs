@@ -25,7 +25,7 @@ public class PauseMenuLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_gameManager = GameObject.Find("GameManager");
+        m_gameManager = GameObject.Find("GameManager");        
         m_gameManager.GetComponent<GameManager>().SetPauseMenu(this.gameObject);
         for(int index = 0; index < m_UIElements.Count; ++index)
         {

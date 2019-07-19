@@ -6,7 +6,7 @@ public class BulletLogic : MonoBehaviour
 {    
     float bulletSpeed = 0f;
     [SerializeField]
-    DamageSourceLogic damageSource = null;
+    DamageSourceLogic[] damageSource = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,12 +15,15 @@ public class BulletLogic : MonoBehaviour
 
     public void InitBulletInfo(PlayerID sourcePlayer, int damage, float bullet_speed) {    
         bulletSpeed = bullet_speed;
-        damageSource.InitDamageSourceInfo(sourcePlayer, damage);
+        for (int index = 0; index < damageSource.Length; ++ index) {
+        damageSource[index].InitDamageSourceInfo(sourcePlayer, damage);
+        }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         transform.position = transform.position + transform.up * Time.deltaTime * bulletSpeed * transform.localScale.x; // Move Forward
+        Debug.Log("Bullet Fly");
     }
 }

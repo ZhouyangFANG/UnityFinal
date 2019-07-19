@@ -1409,18 +1409,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 2eb7d917287dd473496e9ee8187d5b5b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.8908999
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 2eb7d917287dd473496e9ee8187d5b5b, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.8908999
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 2eb7d917287dd473496e9ee8187d5b5b, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.8908999
-      objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 2eb7d917287dd473496e9ee8187d5b5b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.0334
@@ -1476,6 +1464,18 @@ PrefabInstance:
     - target: {fileID: 400004, guid: 2eb7d917287dd473496e9ee8187d5b5b, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.012172185
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 2eb7d917287dd473496e9ee8187d5b5b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.8908999
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 2eb7d917287dd473496e9ee8187d5b5b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.8908999
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 2eb7d917287dd473496e9ee8187d5b5b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.8908999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2eb7d917287dd473496e9ee8187d5b5b, type: 3}
@@ -10780,6 +10780,18 @@ PrefabInstance:
       propertyPath: playerPrefab
       value: 
       objectReference: {fileID: 1850355811187805283, guid: c1869b9edaca6364da0ffbb15d2fd1dd,
+        type: 3}
+    - target: {fileID: 1599130542597980278, guid: 48d26c85953fbe540ad80216924e9880,
+        type: 3}
+      propertyPath: player1Prefab
+      value: 
+      objectReference: {fileID: 1223843079267718, guid: 73ef1557cb433344b93ac132a792329d,
+        type: 3}
+    - target: {fileID: 1599130542597980278, guid: 48d26c85953fbe540ad80216924e9880,
+        type: 3}
+      propertyPath: player2Prefab
+      value: 
+      objectReference: {fileID: 1647451729298192, guid: 5b5719f82e355574e8d20573e708aa23,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48d26c85953fbe540ad80216924e9880, type: 3}

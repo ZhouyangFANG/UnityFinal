@@ -1569,8 +1569,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4895553492966854}
   - component: {fileID: 95090294497234632}
+  - component: {fileID: 8116948406315765289}
+  - component: {fileID: 5410844374232774277}
   m_Layer: 0
-  m_Name: UTC_SchoolUniform_Winter
+  m_Name: Player3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1585,7 +1587,7 @@ Transform:
   m_GameObject: {fileID: 1425842997200330}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 9, y: 9, z: 9}
   m_Children:
   - {fileID: 4052098598776916}
   - {fileID: 4955556126975616}
@@ -1604,15 +1606,42 @@ Animator:
   m_GameObject: {fileID: 1425842997200330}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 5e3548c98f6bb7b4b99308b1431d4339, type: 3}
-  m_Controller: {fileID: 9100000, guid: d071387d14e264545b12d4bfba52b03c, type: 2}
+  m_Controller: {fileID: 9100000, guid: c91f26d35ffe606439b6e332395fe5d2, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8116948406315765289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425842997200330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4418cbea999ce234db7c7b8564e6f183, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_isAttacking: 0
+--- !u!114 &5410844374232774277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425842997200330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a855edbfd142646bcde58440a0c0c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_isRightHandIKActive: 1
+  m_isLeftHandIKActive: 1
 --- !u!1 &1428875268622308
 GameObject:
   m_ObjectHideFlags: 0
@@ -1987,7 +2016,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1533759342002310}
-  m_LocalRotation: {x: 0.7071078, y: 0.0002815406, z: 0.7071058, w: -0.00028154138}
+  m_LocalRotation: {x: 0.7071077, y: 0.00028154056, z: 0.70710576, w: -0.00028154135}
   m_LocalPosition: {x: -0.10417484, y: -0.047148738, z: -0.02673168}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3201,7 +3230,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1918981241332198}
-  m_LocalRotation: {x: 0.7071078, y: 0.0002815406, z: -0.7071058, w: 0.00028154138}
+  m_LocalRotation: {x: 0.7071077, y: 0.00028154056, z: -0.70710576, w: 0.00028154135}
   m_LocalPosition: {x: -0.10417484, y: -0.047148883, z: 0.026731417}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

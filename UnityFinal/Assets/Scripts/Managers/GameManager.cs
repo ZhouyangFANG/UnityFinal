@@ -13,12 +13,16 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     int m_player = 2;
 
+    [SerializeField]
+    GameObject m_eventSystem;
+
     public static GameManager Instance;
 
     void Awake() {
         if (Instance == null) {
             Instance = this;
             DontDestroyOnLoad(this);
+            DontDestroyOnLoad(m_eventSystem);
         } else {
             Destroy(this);
             return;

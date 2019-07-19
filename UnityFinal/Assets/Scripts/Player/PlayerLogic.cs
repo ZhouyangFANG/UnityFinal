@@ -42,14 +42,13 @@ public class PlayerLogic : MonoBehaviour
     }
     void UpdateHandIK(bool isActive, Transform target, AvatarIKGoal avatarIKGoal)
     {
-        if(isActive)
+        if(isActive && target)
         {
             m_animator.SetIKPositionWeight(avatarIKGoal, 1);
             m_animator.SetIKRotationWeight(avatarIKGoal, 1);
-            if (target) {
-                m_animator.SetIKPosition(avatarIKGoal, target.position);
-                m_animator.SetIKRotation(avatarIKGoal, target.rotation);
-            }
+            
+            m_animator.SetIKPosition(avatarIKGoal, target.position);
+            m_animator.SetIKRotation(avatarIKGoal, target.rotation);
         }
         else
         {
@@ -61,13 +60,8 @@ public class PlayerLogic : MonoBehaviour
     {
         if (m_animator)
         {
-
-            // Left-Hand IK
-            UpdateHandIK(m_isLeftHandIKActive, m_leftHandTarget, AvatarIKGoal.LeftHand);
-
-            // Right-Hand IK
             UpdateHandIK(m_isRightHandIKActive,m_rightHandTarget, AvatarIKGoal.RightHand);
-
+            UpdateHandIK(m_isLeftHandIKActive, m_leftHandTarget, AvatarIKGoal.LeftHand);
         }
     }
 
