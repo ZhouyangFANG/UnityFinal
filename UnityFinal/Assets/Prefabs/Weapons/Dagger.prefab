@@ -112,7 +112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b41039459281d82418a3a4bdbb260a71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_weaponID: 1
   AttackCoolDownTime: 0.2
+  RightHandTarget: {fileID: 0}
+  LeftHandTarget: {fileID: 0}
 --- !u!114 &9038349355840949835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,11 +137,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 400000}
     m_Modifications:
-    - target: {fileID: 3140468101471846747, guid: 8ddbdc1f160bf23438ce5b965f0055e0,
-        type: 3}
-      propertyPath: m_Name
-      value: DamageSource
-      objectReference: {fileID: 0}
     - target: {fileID: 5270520011980974756, guid: 8ddbdc1f160bf23438ce5b965f0055e0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -193,6 +191,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3140468101471846747, guid: 8ddbdc1f160bf23438ce5b965f0055e0,
+        type: 3}
+      propertyPath: m_Name
+      value: DamageSource
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ddbdc1f160bf23438ce5b965f0055e0, type: 3}

@@ -250,7 +250,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b41039459281d82418a3a4bdbb260a71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_weaponID: 4
   AttackCoolDownTime: 0.6
+  RightHandTarget: {fileID: 0}
+  LeftHandTarget: {fileID: 0}
 --- !u!114 &8836992029211343127
 MonoBehaviour:
   m_ObjectHideFlags: 0

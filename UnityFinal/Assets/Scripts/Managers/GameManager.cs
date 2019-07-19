@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject m_pauseMenu;
 
+    [SerializeField]
+    int m_player = 2;
+
     public static GameManager Instance;
 
     void Awake() {
@@ -56,5 +59,15 @@ public class GameManager : MonoBehaviour
         Debug.Log("Set Pause Menu");
         m_pauseMenu = pauseMenu;
         m_pauseMenu.SetActive(false);
+    }
+
+    public void SetPlayer(int player)
+    {
+        m_player = player;
+    }
+    
+    public int GetPlayer()
+    {
+        return m_player;
     }
 }
