@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3666495064557902261}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: RightHandPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b41039459281d82418a3a4bdbb260a71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_weaponID: 0
+  m_weaponID: 3
   AttackCoolDownTime: 1
   RightHandTarget: {fileID: 3666495064557902261}
   LeftHandTarget: {fileID: 0}
