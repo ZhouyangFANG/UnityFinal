@@ -47,7 +47,7 @@ public class WeaponLogic : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         m_attackCoolDownTimer += Time.deltaTime;
     }

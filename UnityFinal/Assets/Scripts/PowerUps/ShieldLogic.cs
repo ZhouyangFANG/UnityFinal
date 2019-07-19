@@ -16,7 +16,7 @@ public class ShieldLogic : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {        
         m_effectTimer += Time.deltaTime;
         if (m_effectTimer > EffectTime) {            

@@ -48,8 +48,7 @@ public class PowerUpLogic : MonoBehaviour
     }
 
     public PowerUpID GetPowerUpID()
-    {
-        Debug.Log(m_powerUpID);
+    {        
         return m_powerUpID;
     }
 }

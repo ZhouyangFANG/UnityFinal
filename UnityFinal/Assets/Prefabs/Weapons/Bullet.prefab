@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageSource:
-  - {fileID: 0}
+  - {fileID: 1233299305696432457}
   m_forwardDirection: {fileID: 9004604427573599488}
 --- !u!1 &5093828089787258387
 GameObject:
@@ -205,3 +205,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1072969383852493142}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1233299305696432457 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2305417323908978719, guid: 8ddbdc1f160bf23438ce5b965f0055e0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1072969383852493142}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926601802af40864084cf0f354855cdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
