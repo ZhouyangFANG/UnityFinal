@@ -121,8 +121,6 @@ GameObject:
   - component: {fileID: 8852774480780476885}
   - component: {fileID: 8852774480781771253}
   - component: {fileID: 8852774480782902069}
-  - component: {fileID: 5475681584574689461}
-  - component: {fileID: 4832734511492501289}
   m_Layer: 0
   m_Name: HealthPack
   m_TagString: Item
@@ -189,33 +187,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!111 &5475681584574689461
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8852774480780975605}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: a10375ae38926db4aa443a1748841c70, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: a10375ae38926db4aa443a1748841c70, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!114 &4832734511492501289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8852774480780975605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 067beb7ab0d6baa49a599e94db6d12b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectPrefab: {fileID: 0}
-  m_itemType: 2
