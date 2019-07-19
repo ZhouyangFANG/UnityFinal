@@ -95,6 +95,13 @@ public class PlayerLogic : MonoBehaviour
 
     public void takeDamage(int damage) {
         // Prevent damage to self (if sourcePlayerId is set)
+        ShieldLogic shield = GetComponentInChildren<ShieldLogic>();
+        
+        if (shield) {
+            Destroy(shield.gameObject);
+            return;
+        }
+
         if (m_invincibleAfterDamageTimer >= InvincibleAfterDamageTime) {
             m_invincibleAfterDamageTimer = 0.0f;
             // Update the player appearance here (invincible)
@@ -135,7 +142,7 @@ public class PlayerLogic : MonoBehaviour
         
     }
 
-    public void takePickUp(PickUpLogic item) {
+    public void takePickUp(PickUpLogic item) {        
         if (item.isWeapon()) {
             TakeWeapon(item.getItemPrefab());
         } else if (item.isPowerUp()) {
@@ -149,6 +156,7 @@ public class PlayerLogic : MonoBehaviour
     void TakeHp() {
         if (m_hp < FullHp) {
             m_hp += 1;
+            Debug.Log(m_playerID.ToString() + " is Recovered for 1 hp");
         }
     }
 

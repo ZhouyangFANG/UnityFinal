@@ -35,10 +35,9 @@ public class RandomEventLogic : MonoBehaviour
 
     void RandomGenerateItem() {
         bool successFlag = false;
-        
-        while(!successFlag) {
+        for (int i = 0; i < 5; i++) {         
             GameObject block = map.getBlock(Random.Range(0, map.MapXBlockNum), Random.Range(0, map.MapZBlockNum));
-            successFlag = block.GetComponent<PickUpSummonLogic>().summonRandomItem();
+            successFlag = block.GetComponent<PickUpSummonLogic>().summonRandomItem();                    
         }
     }
 
