@@ -10,6 +10,19 @@ public class PlayerLogic : MonoBehaviour
     
     const int FullHp = 3;
     int m_hp;
+    Animator m_animator;
+
+    // [SerializeField]
+    Transform m_leftHandTarget;
+
+    // [SerializeField]
+    Transform m_rightHandTarget;
+
+    [SerializeField]
+    bool m_isRightHandIKActive = true;
+
+    [SerializeField]
+    bool m_isLeftHandIKActive = true;
 
     const float InvincibleAfterDamageTime = 2.0f;
     float m_invincibleAfterDamageTimer = 0;
@@ -19,12 +32,43 @@ public class PlayerLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        m_animator = GetComponent<Animator>();
         m_hp = FullHp;
         m_invincibleAfterDamageTimer = InvincibleAfterDamageTime;
     }
 
     public void InitInfo(PlayerID id) {
         m_playerID = id;
+    }
+    void UpdateHandIK(bool isActive, Transform target, AvatarIKGoal avatarIKGoal)
+    {
+        if(isActive)
+        {
+            m_animator.SetIKPositionWeight(avatarIKGoal, 1);
+            m_animator.SetIKRotationWeight(avatarIKGoal, 1);
+            if (target) {
+                m_animator.SetIKPosition(avatarIKGoal, target.position);
+                m_animator.SetIKRotation(avatarIKGoal, target.rotation);
+            }
+        }
+        else
+        {
+            m_animator.SetIKPositionWeight(avatarIKGoal, 0);
+            m_animator.SetIKRotationWeight(avatarIKGoal, 0);
+        }
+    }
+    void OnAnimatorIK()
+    {
+        if (m_animator)
+        {
+
+            // Left-Hand IK
+            UpdateHandIK(m_isLeftHandIKActive, m_leftHandTarget, AvatarIKGoal.LeftHand);
+
+            // Right-Hand IK
+            UpdateHandIK(m_isRightHandIKActive,m_rightHandTarget, AvatarIKGoal.RightHand);
+
+        }
     }
 
     // Update is called once per frame
@@ -71,6 +115,8 @@ public class PlayerLogic : MonoBehaviour
         }
 
         m_takingWeapon = Instantiate(weapon, transform).GetComponent<WeaponLogic>();
+        m_leftHandTarget = m_takingWeapon.LeftHandTarget;
+        m_rightHandTarget = m_takingWeapon.RightHandTarget;
         m_takingWeapon.OnAttackStart += AttackStarted;
         m_takingWeapon.OnAttackFinish += AttackFinished;
     }

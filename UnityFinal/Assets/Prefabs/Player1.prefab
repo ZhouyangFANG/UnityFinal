@@ -1721,6 +1721,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72a855edbfd142646bcde58440a0c0c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_leftHandTarget: {fileID: 770503483891237217, guid: c6c67fc4b1d35435899a157e3f40aad2,
+    type: 3}
+  m_rightHandTarget: {fileID: 770503483891237217, guid: c6c67fc4b1d35435899a157e3f40aad2,
+    type: 3}
+  m_isRightHandIKActive: 1
+  m_isLeftHandIKActive: 1
 --- !u!114 &2667252653819888422
 MonoBehaviour:
   m_ObjectHideFlags: 0

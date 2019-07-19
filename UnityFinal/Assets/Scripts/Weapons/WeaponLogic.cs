@@ -17,6 +17,13 @@ public class WeaponLogic : MonoBehaviour
     public delegate void AttackEvent();
     public event AttackEvent OnAttackStart;
     public event AttackEvent OnAttackFinish;
+
+    [SerializeField]
+    public Transform RightHandTarget;
+
+    [SerializeField]
+    public Transform LeftHandTarget;
+
     void Start()
     {
         m_attackCoolDownTimer = AttackCoolDownTime;
