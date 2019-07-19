@@ -198,4 +198,14 @@ public class PlayerLogic : MonoBehaviour
         else
             return 0;
     }
+
+    public PowerUpID GetPowerUpID()
+    {
+        if(m_takingPowerUp)
+        {
+            return m_takingPowerUp.GetComponent<PowerUpLogic>().GetPowerUpID();
+        }
+        else
+            return 0;
+    }
 }
