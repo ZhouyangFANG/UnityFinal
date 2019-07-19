@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (!m_isAttacking && !(isHorizontalMoving && isVerticalMoving) && (m_moveCoolDownTimer > MoveCoolDownTime)) { // Prevent Moving Diagonally
+        if (!m_isAttacking && !(isHorizontalMoving && isVerticalMoving) && (m_moveCoolDownTimer >= MoveCoolDownTime)) { // Prevent Moving Diagonally
             if ( isHorizontalMoving && !m_isMoving) {
                 
                 if (m_horizontalMoveInput > 0) {
