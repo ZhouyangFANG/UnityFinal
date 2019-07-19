@@ -2,6 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PowerUpID {
+    None = 0,
+    INKY = 1,
+    Lambert = 2,
+    Mine = 3,
+    Missile = 4,
+    Poison = 5,
+    PowerUp = 6,
+    Shield = 7,
+    SpeedUp = 8,
+    Wall = 9,
+}
 
 // Handle the power up casting
 // The power up is set as the child of the player
