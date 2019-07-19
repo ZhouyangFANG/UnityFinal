@@ -142,6 +142,7 @@ MonoBehaviour:
   PickUpsPrefabList:
   - {fileID: 1903056498490387012, guid: be36b811c49b8428cb21ac1b0452f006, type: 3}
   - {fileID: 1903056498490387012, guid: 0b86fd230f08b38469899cb4ceb1045d, type: 3}
+  - {fileID: 1903056498490387012, guid: 54a4ee0facab8e84482a9021dff4f430, type: 3}
   - {fileID: 1903056498490387012, guid: c4f77e6f728e54b43a5fa683a1d10e60, type: 3}
   - {fileID: 1903056498490387012, guid: 7408fe0813e5a4a6083f62c775be69bc, type: 3}
   - {fileID: 1903056498490387012, guid: 4b98ef41956ea4ceb88aa7caf78552e0, type: 3}

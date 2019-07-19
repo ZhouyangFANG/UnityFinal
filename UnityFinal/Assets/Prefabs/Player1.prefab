@@ -863,7 +863,7 @@ GameObject:
   - component: {fileID: 6429023296245011524}
   - component: {fileID: 4333600583918316587}
   m_Layer: 0
-  m_Name: Yuko_SchoolUniform_Winter
+  m_Name: Player1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
