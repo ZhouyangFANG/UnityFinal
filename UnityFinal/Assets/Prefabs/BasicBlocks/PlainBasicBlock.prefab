@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8570426788293214351}
   - component: {fileID: 1698169352229429501}
   - component: {fileID: 7651702897696188226}
+  - component: {fileID: 1399135777459955486}
   m_Layer: 10
   m_Name: PlainBasicBlock
   m_TagString: Untagged
@@ -61,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 86cc6b609c634403c9eea7907b9edbd7, type: 2}
+  - {fileID: 2100000, guid: 6d1c5aff3aa243f49841261b4f49b392, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -143,3 +144,19 @@ MonoBehaviour:
   - {fileID: 1903056498490387012, guid: 54a4ee0facab8e84482a9021dff4f430, type: 3}
   - {fileID: 1903056498490387012, guid: c4f77e6f728e54b43a5fa683a1d10e60, type: 3}
   - {fileID: 1903056498490387012, guid: c5e1d321760b5bf48b4809dd0ebe224a, type: 3}
+--- !u!114 &1399135777459955486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9024503095156942750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21e6327b68612f040b9941519b9d4961, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hurtTrapPrefab: {fileID: 3192395746133466788, guid: 2f406435702b93c42b7a40f7a0351a21,
+    type: 3}
+  slowTrapPrefab: {fileID: 2724267216761053398, guid: 0454c255ee8c3a0468b90c5ad873ea0b,
+    type: 3}
