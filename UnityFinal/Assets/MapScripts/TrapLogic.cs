@@ -12,6 +12,10 @@ public class TrapLogic : MonoBehaviour
     TrapType Type;
     [SerializeField]
     GameObject slowDownEffector;
+    [SerializeField]
+    AudioClip TriggerSound;
+
+    AudioSource audio;
     PlayerID m_sourcePlayerId = PlayerID.Nobody;
     float LifeTime = 20.0f;
     float m_lifeTimer = 0.0f;
@@ -21,6 +25,7 @@ public class TrapLogic : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        audio = GetComponent<AudioSource>();
         m_isSteady = false;
     }
 
@@ -67,6 +72,9 @@ public class TrapLogic : MonoBehaviour
                 player.takeEffector(slowDownEffector);
                 startDestroy();
             }        
+            if (!audio.isPlaying && TriggerSound) {
+                audio.PlayOneShot(TriggerSound);
+            }
         }
     }
 }
