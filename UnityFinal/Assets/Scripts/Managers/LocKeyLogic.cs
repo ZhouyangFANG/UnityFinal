@@ -18,4 +18,8 @@ public class LocKeyLogic : MonoBehaviour
     void UpdateText() {
         GetComponent<Text>().text = LocalizationManager.Instance.GetLocalisedString(m_key);
     }
+
+    private void OnDestroy() {
+        LocalizationManager.Instance.OnUpdateLanguage -= UpdateText;
+    }
 }
