@@ -19,8 +19,7 @@ public class MissileEffectLogic : MonoBehaviour
         
     }
 
-    void Cast() {
-        Debug.Log(transform.position);
+    void Cast() {        
         GameObject missile = GameObject.Instantiate(m_missile, transform.position, Quaternion.FromToRotation(Vector3.up, Vector3.up));
         
         GameObject [] m_targets = GameObject.FindGameObjectsWithTag("Player");
@@ -29,7 +28,8 @@ public class MissileEffectLogic : MonoBehaviour
         while(m_targets[r] == transform.parent.gameObject){
              r =rnd.Next(m_targets.Length);
         }
-        missile.GetComponent<MissileLogic>().SetTarget(m_targets[r]);
+        missile.GetComponent<MissileLogic>().setSourcePlayer(GetComponentInParent<PlayerLogic>().getPlayerID());
+        missile.GetComponent<MissileLogic>().setTarget(m_targets[r]);
         Destroy(gameObject);
     }
 }
