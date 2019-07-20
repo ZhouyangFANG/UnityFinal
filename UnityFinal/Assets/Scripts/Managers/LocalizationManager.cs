@@ -33,7 +33,7 @@ public class LocalizationManager : MonoBehaviour
         }
         else
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
 
         SetupLocalisationFiles();

@@ -35,6 +35,10 @@ public class PauseMenuLogic : MonoBehaviour
                 m_UIButtons.Add(buttonObj);
             }
         }
+        
+        transform.Find("Title").gameObject.SetActive(true);
+        transform.Find("Back").gameObject.SetActive(true);
+        transform.Find("WinText").gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -91,5 +95,13 @@ public class PauseMenuLogic : MonoBehaviour
         Time.timeScale = 1;
         gameObject.SetActive(false);
         m_gameManager.GetComponent<GameManager>().ChangeScece("MainMenuScene");
+    }
+
+    public void SetFinishedType(int playerID)
+    {
+        transform.Find("Title").gameObject.SetActive(false);
+        transform.Find("Back").gameObject.SetActive(false);
+        transform.Find("WinText").gameObject.SetActive(true);
+        transform.Find("WinText/WinPlayer").gameObject.GetComponent<Text>().text =(playerID+1).ToString();
     }
 }

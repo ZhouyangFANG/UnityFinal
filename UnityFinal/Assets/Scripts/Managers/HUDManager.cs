@@ -178,4 +178,13 @@ public class HUDManager : MonoBehaviour
                 break;
         }
     }
+
+    public void DestoryPlayerHUD(int playerID)
+    {
+        if(Player_HUD[playerID])
+        {
+            Player_HUD[playerID].SetActive(false);
+        }
+    }
+
 }
