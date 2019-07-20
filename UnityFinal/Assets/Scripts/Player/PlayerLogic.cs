@@ -185,6 +185,7 @@ public class PlayerLogic : MonoBehaviour
 
     void TakeHp() {
         if (m_hp < FullHp) {
+            ParticleEffectManager.Instance.playPlayerPickUpHeartEffect(transform.position + new Vector3(0, 4.0f, 0));
             if (m_AudioSource && HPSounds) {
                 m_AudioSource.PlayOneShot(HPSounds);
                 // Debug.Log("Sounds out");
