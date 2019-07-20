@@ -56,11 +56,11 @@ public class ObstacleLogic : MonoBehaviour
         }  else {
             
             if (Hp > 0 && m_AudioSource && DestroySounds && !m_AudioSource.isPlaying) {
-                m_AudioSource.PlayOneShot(DestroySounds);
+                m_AudioSource.PlayOneShot(DestroySounds, 0.4f);
                 // Debug.Log("Sounds out");
             }  
             if (Hp < 0 && m_AudioSource && UndestroyableSounds && !m_AudioSource.isPlaying) {
-                m_AudioSource.PlayOneShot(UndestroyableSounds);
+                m_AudioSource.PlayOneShot(UndestroyableSounds, 0.4f);
                 // Debug.Log("Sounds out");
             } 
 
