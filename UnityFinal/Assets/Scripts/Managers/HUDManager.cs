@@ -43,7 +43,7 @@ public class HUDManager : MonoBehaviour
     void Start()
     {
         m_gameManager = GameObject.Find("GameManager");
-        m_playernum = m_gameManager.GetComponent<GameManager>().GetPlayer();
+        m_playernum = m_gameManager.GetComponent<GameManager>().getPlayer();
         Player_HUD = new GameObject[4];
         for(int i = 0; i < 4; i++)
         {

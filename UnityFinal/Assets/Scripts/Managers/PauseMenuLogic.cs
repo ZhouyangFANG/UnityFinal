@@ -26,7 +26,7 @@ public class PauseMenuLogic : MonoBehaviour
     void Start()
     {
         m_gameManager = GameObject.Find("GameManager");        
-        m_gameManager.GetComponent<GameManager>().SetPauseMenu(this.gameObject);
+        m_gameManager.GetComponent<GameManager>().setPauseMenu(this.gameObject);
         for(int index = 0; index < m_UIElements.Count; ++index)
         {
             Button buttonObj = m_UIElements[index].m_GameObject.GetComponent<Button>();
@@ -87,14 +87,14 @@ public class PauseMenuLogic : MonoBehaviour
     {
         Time.timeScale = 1;
         gameObject.SetActive(false);
-        m_gameManager.GetComponent<GameManager>().ChangeScece("GameScene");
+        m_gameManager.GetComponent<GameManager>().changeScece("GameScene");
     }
 
     public void OnMainManuClicked()
     {
         Time.timeScale = 1;
         gameObject.SetActive(false);
-        m_gameManager.GetComponent<GameManager>().ChangeScece("MainMenuScene");
+        m_gameManager.GetComponent<GameManager>().changeScece("MainMenuScene");
     }
 
     public void SetFinishedType(int playerID)
@@ -106,6 +106,6 @@ public class PauseMenuLogic : MonoBehaviour
     }
 
     private void OnDestroy() {
-        Time.timeScale = 1;    
+        Time.timeScale = 1;
     }
 }

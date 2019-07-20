@@ -30,7 +30,7 @@ public class MapLogic : MonoBehaviour
 
     [SerializeField]
     public int MapZBlockNum = 12;
-
+    int m_playerNum;
 
     [SerializeField]
     private GameObject basicBlockPrefab = null; // Prefab of a block With BlockLogic Script Attach to it
@@ -38,11 +38,14 @@ public class MapLogic : MonoBehaviour
     private GameObject player1Prefab = null;
     [SerializeField]    
     private GameObject player2Prefab = null;
+    [SerializeField]    
+    private GameObject player3Prefab = null;
     private GameObject [][] m_blocks;
     private GameObject [] m_players;
     // Start is called before the first frame update
     void Start()
     {
+        m_playerNum = GameManager.Instance.getPlayer();
         GenerateMap();
         SummonPlayer();
     }
@@ -83,7 +86,7 @@ public class MapLogic : MonoBehaviour
         
         const float playerHeight = 0;
         Transform Trans1 = m_blocks[0][0].transform;
-                
+        
         GameObject Player1 = Instantiate(player1Prefab, Trans1.position + new Vector3(0, playerHeight, 0), Trans1.rotation);
         Player1.transform.parent = Trans1;
         Player1.name = "Player1";
@@ -100,6 +103,18 @@ public class MapLogic : MonoBehaviour
         Player2.GetComponent<PlayerController>().InitInfo(PlayerID.Player2, MapXBlockNum - 1, MapZBlockNum - 1);
         m_players[(int)PlayerID.Player2] = Player2;
         Trans2.gameObject.GetComponent<BlockLogic>().setPlayer(Player2);
+
+        if (m_playerNum >= 3) {
+            Transform Trans3 = m_blocks[0][MapZBlockNum - 1].transform;
+            GameObject Player3 = Instantiate(player3Prefab, Trans3.position + new Vector3(0, playerHeight, 0), Trans3.rotation);
+            Player3.transform.parent = Trans3;
+            Player3.name = "Player3";
+            Player3.tag = "Player";
+            Player3.GetComponent<PlayerController>().InitInfo(PlayerID.Player3, 0, MapZBlockNum - 1);
+            m_players[(int)PlayerID.Player3] = Player3;
+            Trans3.gameObject.GetComponent<BlockLogic>().setPlayer(Player3);
+
+        }
     }
 
     public GameObject getBlock(int x, int z) {

@@ -86,7 +86,7 @@ public class MainMenuLogic : MonoBehaviour
     public void OnStartClicked()
     {
         Debug.Log("Start has been clicked");
-        m_gameManager.GetComponent<GameManager>().ChangeScece("GameScene");
+        m_gameManager.GetComponent<GameManager>().changeScece("GameScene");
     }
 
     public void OnOptionClicked()
@@ -119,17 +119,17 @@ public class MainMenuLogic : MonoBehaviour
 
     public void On2PlayerClicked()
     {
-        m_gameManager.GetComponent<GameManager>().SetPlayer(2);
+        m_gameManager.GetComponent<GameManager>().setPlayer(2);
     }
 
     public void On3PlayerClicked()
     {
-        m_gameManager.GetComponent<GameManager>().SetPlayer(3);
+        m_gameManager.GetComponent<GameManager>().setPlayer(3);
     }
 
     public void On4PlayerClicked()
     {
-        m_gameManager.GetComponent<GameManager>().SetPlayer(4);
+        m_gameManager.GetComponent<GameManager>().setPlayer(4);
     }
 
     public void OnBackMainMenuClicked()

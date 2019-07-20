@@ -42,8 +42,10 @@ public class GhostLogic : MonoBehaviour
             Color temp = Player2Mat.color;
             Player2Mat.color = new Color(temp.r, temp.g, temp.b, 0.3f);
             userMat = Player2Mat;
-        } else {
-            Debug.LogError("GhostLogic: No Mat Found");
+        } else if (GetComponentInParent<PlayerLogic>().getPlayerID() == PlayerID.Player3) {
+            Color temp = Player3Mat.color;
+            Player3Mat.color = new Color(temp.r, temp.g, temp.b, 0.3f);
+            userMat = Player3Mat;
         }
     }
 

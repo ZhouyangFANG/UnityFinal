@@ -12,7 +12,7 @@ public enum PlayerID {
     Nobody = -1,
     Player1 = 0,
     Player2 = 1,
-    // Player3 = 2,
+    Player3 = 2,
     // Player4 = 3,
 }
 
@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
 
     public void InitInfo(PlayerID id, int x, int z) {
         m_playerID = id;
+        Debug.Log(m_playerID.ToString());
         xIndex = x;
         zIndex = z;
         GetComponent<PlayerLogic>().InitInfo(id);
@@ -77,59 +78,115 @@ public class PlayerController : MonoBehaviour
 
         m_horizontalMoveInput = Input.GetAxisRaw(m_playerID.ToString() + "_HorizontalMove");                
         m_verticalMoveInput = Input.GetAxisRaw(m_playerID.ToString() + "_VerticalMove");
-        isHorizontalMoving = Input.GetButton(m_playerID.ToString() + "_HorizontalMove");
+        isHorizontalMoving = Input.GetButton(m_playerID.ToString() + "_HorizontalMove"); 
         isVerticalMoving = Input.GetButton(m_playerID.ToString() + "_VerticalMove");
         isMoved = false;
 
         isCasting = Input.GetButtonDown(m_playerID.ToString() + "_CastPowerUp");
     }
 
+    bool isController() {
+        return m_playerID == PlayerID.Player3;
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
         if (!(isHorizontalFiring && isVerticalFiring)) { // Prevent Vertical Fire            
-            if (isHorizontalFiring) {
-                if (m_horizontalFireInput > 0) {
-                    TryAttack(Direction.Right);
-                } else {
-                    TryAttack(Direction.Left);
-                }        
-            }
+            if (isController()) {
 
-            if (isVerticalFiring) {
-                if (m_verticalFireInput > 0) {
-                    TryAttack(Direction.Up);
-                } else {
-                    TryAttack(Direction.Down);
+                if (Mathf.Abs(m_horizontalFireInput) > 0.8) {
+                    if (m_horizontalFireInput > 0) {
+                        TryAttack(Direction.Right);
+                    } else {
+                        TryAttack(Direction.Left);
+                    }
+                }        
+                
+                                
+                if (Mathf.Abs(m_verticalFireInput) > 0.8) {
+                    if (m_verticalFireInput > 0) {
+                        TryAttack(Direction.Up);
+                    } else {
+                        TryAttack(Direction.Down);
+                    }
+                }
+            } else {
+                
+                if (isHorizontalFiring) {
+                    if (m_horizontalFireInput > 0) {
+                        TryAttack(Direction.Right);
+                    } else {
+                        TryAttack(Direction.Left);
+                    }        
+                }
+                
+                if (isVerticalFiring) {
+                    if (m_verticalFireInput > 0) {
+                        TryAttack(Direction.Up);
+                    } else {
+                        TryAttack(Direction.Down);
+                    }
                 }
             }
         }
 
 
         if (!m_isAttacking && !(isHorizontalMoving && isVerticalMoving) && (m_moveCoolDownTimer >= MoveCoolDownTime)) { // Prevent Moving Diagonally
-            if ( isHorizontalMoving && !m_isMoving) {
-                if (m_horizontalMoveInput > 0) {
-                    isMoved = TryMove(Direction.Right);
+            if (!m_isMoving) {
+                if (isController()) {
+                    if (Mathf.Abs(m_horizontalMoveInput) > 0.8) {
+                        if (m_horizontalMoveInput > 0) {
+                            isMoved = TryMove(Direction.Right);
+                        } else {
+                            isMoved = TryMove(Direction.Left);
+                        }
+                    
+                        if (isMoved) {
+                            m_isMoving = true;
+                            m_moveCoolDownTimer = 0.0f;
+                            }
+                    }
+
+                    if (Mathf.Abs(m_verticalMoveInput) > 0.8) {
+                        if (m_verticalMoveInput > 0) {
+                            isMoved = TryMove(Direction.Up);
+                        } else {
+                            isMoved = TryMove(Direction.Down);
+                        }
+
+                        if (isMoved) {
+                            m_isMoving = true;
+                            m_moveCoolDownTimer = 0.0f;
+                        }
+                    }
+
                 } else {
-                    isMoved = TryMove(Direction.Left);
-                }
+                
+                    if ( isHorizontalMoving ) {
+                        if (m_horizontalMoveInput > 0) {
+                            isMoved = TryMove(Direction.Right);
+                        } else {
+                            isMoved = TryMove(Direction.Left);
+                        }
 
-                if (isMoved) {
-                    m_isMoving = true;
-                    m_moveCoolDownTimer = 0.0f;
-                }
-            }
+                        if (isMoved) {
+                            m_isMoving = true;
+                            m_moveCoolDownTimer = 0.0f;
+                        }
+                    }
 
-            if ( isVerticalMoving && !m_isMoving) {
-                if (m_verticalMoveInput > 0) {
-                    isMoved = TryMove(Direction.Up);
-                } else {
-                    isMoved = TryMove(Direction.Down);
-                }
+                    if ( isVerticalMoving ) {
+                        if (m_verticalMoveInput > 0) {
+                            isMoved = TryMove(Direction.Up);
+                        } else {
+                            isMoved = TryMove(Direction.Down);
+                        }
 
-                if (isMoved) {
-                    m_isMoving = true;
-                    m_moveCoolDownTimer = 0.0f;
+                        if (isMoved) {
+                            m_isMoving = true;
+                            m_moveCoolDownTimer = 0.0f;
+                        }
+                    }
                 }
             }
         }       

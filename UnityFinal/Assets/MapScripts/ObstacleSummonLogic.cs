@@ -58,7 +58,7 @@ public class ObstacleSummonLogic : MonoBehaviour
                 destroyObstacle();
             }
         } else {
-            if (Random.Range(0, 3) == 0) {
+            if (Random.Range(0, 4) == 0) {
                 summonObstacle(obstacleNotDestroyablePrefab);
             } else {
                 summonObstacle(obstacleDestroyablePrefab);

@@ -55,24 +55,23 @@ public class GameManager : MonoBehaviour
         CheckFinished();
     }
 
-    public void ChangeScece(string sceneName)
+    public void changeScece(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
     }
 
-    public void SetPauseMenu(GameObject pauseMenu)
-    {
-        Debug.Log("Set Pause Menu");
+    public void setPauseMenu(GameObject pauseMenu)
+    {        
         m_pauseMenu = pauseMenu;
         m_pauseMenu.SetActive(false);
     }
 
-    public void SetPlayer(int player)
+    public void setPlayer(int player)
     {
         m_player = player;
     }
     
-    public int GetPlayer()
+    public int getPlayer()
     {
         return m_player;
     }
