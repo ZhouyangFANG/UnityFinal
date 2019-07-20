@@ -21,7 +21,7 @@ public class DamageSourceLogic : MonoBehaviour
     public event DisableEvent OnDisableEvent;
 
     void Start() {
-
+                
     }
 
     public void InitDamageSourceInfo(PlayerID source, int damage) {
@@ -51,6 +51,10 @@ public class DamageSourceLogic : MonoBehaviour
 
     public bool isMissile() {
         return m_isMissile;
+    }
+
+    public void setMissile() {
+        m_isMissile = true;
     }
 
 

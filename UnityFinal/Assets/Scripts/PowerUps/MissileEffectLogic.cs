@@ -19,8 +19,7 @@ public class MissileEffectLogic : MonoBehaviour
         
     }
 
-    void Cast() {
-        Debug.Log(transform.position);
+    void Cast() {        
         GameObject missile = GameObject.Instantiate(m_missile, transform.position, Quaternion.FromToRotation(Vector3.up, Vector3.up));
         
         GameObject [] m_targets = GameObject.FindGameObjectsWithTag("Player");
