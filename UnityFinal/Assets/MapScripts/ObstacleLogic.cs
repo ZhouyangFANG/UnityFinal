@@ -32,8 +32,12 @@ public class ObstacleLogic : MonoBehaviour
         m_isSteady = false;
     }
 
-    public void takeDamage(GameObject damageSource) {
-        Hp -= damageSource.GetComponent<DamageSourceLogic>().getDamage();        
+    public void takeDamage(DamageSourceLogic damageSource) {
+        if (damageSource.isMissile()) {
+            startDestroy();
+        }  else {
+            Hp -= damageSource.getDamage();  
+        }
     }
 
     void Destroy() {

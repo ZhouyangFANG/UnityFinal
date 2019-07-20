@@ -75,27 +75,30 @@ public class BlockLogic : MonoBehaviour
         m_player.GetComponent<PlayerLogic>().takePickUp(m_pickUp.GetComponent<PickUpLogic>());
     }
 
-    void HandleDamageSource(GameObject damageSource) 
+    void HandleDamageSource(DamageSourceLogic damageSource) 
     {
         // Update the appearance of the block
         // Pass the damage source to player        
+        
         if (m_player) {
             m_player.takeDamage(damageSource);
             if (damageSource.transform.parent.gameObject.tag == "Bullet") {
                 if (m_player.getPlayerID() != damageSource.GetComponent<DamageSourceLogic>().getSourcePlayerID()) {
                     Destroy(damageSource.transform.parent.gameObject);
                 }
+                if (damageSource.isMissile()) {
+                    Destroy(damageSource.transform.parent.gameObject);
+                }
             }
         }
 
         if (m_obstacle) {
-            damageSource.SetActive(false);
-            m_obstacle.GetComponent<ObstacleLogic>().takeDamage(damageSource);
+            m_obstacle.takeDamage(damageSource);
             if (damageSource.transform.parent.gameObject.tag == "Bullet") {
                 Destroy(damageSource.transform.parent.gameObject);
             }
         }
-        
+
     }    
 
     void ChangeBlockAppearanceOnAttack() {
@@ -121,7 +124,7 @@ public class BlockLogic : MonoBehaviour
 
     private void OnTriggerStay(Collider other) {        
         if (other.tag == "DamageSource") {
-            HandleDamageSource(other.gameObject);
+            HandleDamageSource(other.gameObject.GetComponent<DamageSourceLogic>());
         } 
     }
 

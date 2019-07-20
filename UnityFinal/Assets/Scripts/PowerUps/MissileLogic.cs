@@ -7,9 +7,9 @@ public class MissileLogic : MonoBehaviour
 {
     const float EffectTime = 15.0f;
     float m_effectTimer;
-
-    GameObject m_parent;
-
+    
+    [SerializeField]
+    GameObject DamageSource = null;
     GameObject m_target = null;
 
     NavMeshAgent m_navMeshAgent;
@@ -17,8 +17,7 @@ public class MissileLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_effectTimer = 0;
-
+        m_effectTimer = 0;        
         m_navMeshAgent = GetComponent<NavMeshAgent>();
         m_navMeshAgent.enabled = false;
     }
@@ -43,16 +42,18 @@ public class MissileLogic : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    public void SetTarget(GameObject target)
+    public void setSourcePlayer(PlayerID playerId) {
+        DamageSource.GetComponent<DamageSourceLogic>().InitDamageSourceInfo(playerId, 1);
+    }
+    
+    public void setTarget(GameObject target)
     {
         m_target = target;
         
         NavMeshHit closestHit;
         if( NavMesh.SamplePosition(  transform.position, out closestHit, 500, 1 ) ){
             transform.position = closestHit.position;
-            gameObject.AddComponent<NavMeshAgent>();
+            //gameObject.AddComponent<NavMeshAgent>();
         }
-        
     }
 }

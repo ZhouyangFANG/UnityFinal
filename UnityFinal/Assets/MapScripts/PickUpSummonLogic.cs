@@ -14,8 +14,7 @@ public class PickUpSummonLogic : MonoBehaviour
     BlockLogic block;
     void Start()
     {
-        block = GetComponent<BlockLogic>();
-        CanSummonRandomItem = true;
+        block = GetComponent<BlockLogic>();        
     }
 
     public bool summonRandomItem() {

@@ -68,7 +68,6 @@ public class PlayerLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         if (m_invincibleAfterDamageTimer < InvincibleAfterDamageTime) {
             m_invincibleAfterDamageTimer += Time.deltaTime;
         } else {
@@ -77,15 +76,15 @@ public class PlayerLogic : MonoBehaviour
     }
 
     // Receive the damage from the block logic
-    public void takeDamage(GameObject damageSource) {
-        if (damageSource.GetComponent<DamageSourceLogic>().getSourcePlayerID() != m_playerID) {
+    public void takeDamage(DamageSourceLogic damageSource) {
+        if (damageSource.getSourcePlayerID() != m_playerID) {
             // Prevent damage to self (if sourcePlayerId is set)
             if (m_invincibleAfterDamageTimer >= InvincibleAfterDamageTime) {
                 m_invincibleAfterDamageTimer = 0.0f;
                 // Update the player appearance here (invincible)
                 Debug.Log(m_playerID.ToString() + " is damaged for 1 hp");
-                damageSource.SetActive(false);
-                m_hp -= damageSource.GetComponent<DamageSourceLogic>().getDamage();
+                damageSource.gameObject.SetActive(false);
+                m_hp -= damageSource.getDamage();
                 if (m_hp <= 0) {
                     Death();
                 }

@@ -29,7 +29,8 @@ public class MissileEffectLogic : MonoBehaviour
         while(m_targets[r] == transform.parent.gameObject){
              r =rnd.Next(m_targets.Length);
         }
-        missile.GetComponent<MissileLogic>().SetTarget(m_targets[r]);
+        missile.GetComponent<MissileLogic>().setSourcePlayer(GetComponentInParent<PlayerLogic>().getPlayerID());
+        missile.GetComponent<MissileLogic>().setTarget(m_targets[r]);
         Destroy(gameObject);
     }
 }
