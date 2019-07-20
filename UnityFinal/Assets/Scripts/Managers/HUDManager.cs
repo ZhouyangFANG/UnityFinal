@@ -11,14 +11,14 @@ public class HUDManager : MonoBehaviour
     int m_playernum;
     [SerializeField]
     GameObject [] m_player;
-    int playerID;
+    PlayerID playerID;
 
     [SerializeField]
     GameObject [] Player_HUD;
     GameObject [] hp;
     int m_hp;
-    int m_weaponID;
-    int m_powerUpID;
+    WeaponID m_weaponID;
+    PowerUpID m_powerUpID;
 
     GameObject m_weapon;
     Texture2D Transparent;
@@ -40,20 +40,7 @@ public class HUDManager : MonoBehaviour
     Texture2D Wall;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        m_gameManager = GameObject.Find("GameManager");
-        m_playernum = m_gameManager.GetComponent<GameManager>().getPlayer();
-        Player_HUD = new GameObject[4];
-        for(int i = 0; i < 4; i++)
-        {
-            Player_HUD[i] = GameObject.Find("Canvas/Player"+(i+1).ToString()+"_HUD");
-            if(i < m_playernum) Player_HUD[i].SetActive(true);
-            else Player_HUD[i].SetActive(false);
-        }
-        m_player = GameObject.FindGameObjectsWithTag("Player");
-        hp = new GameObject[3];
-
+    private void Awake() {
         Transparent = (Texture2D)Resources.Load("Transparent");
         Dagger = (Texture2D)Resources.Load("Dagger");
         Claymore = (Texture2D)Resources.Load("Claymore");
@@ -69,7 +56,21 @@ public class HUDManager : MonoBehaviour
         Poison = (Texture2D)Resources.Load("Poison");
         Shield = (Texture2D)Resources.Load("Shield");
         SpeedUp = (Texture2D)Resources.Load("SpeedUp");
-        Wall = (Texture2D)Resources.Load("Wall");
+        Wall = (Texture2D)Resources.Load("Wall");    
+    }
+
+    void Start()
+    {
+        m_playernum = GameManager.Instance.getPlayer();
+        Player_HUD = new GameObject[4];
+        for(int i = 0; i < 4; i++)
+        {
+            Player_HUD[i] = GameObject.Find("Canvas/Player"+(i+1).ToString()+"_HUD");
+            if(i < m_playernum) Player_HUD[i].SetActive(true);
+            else Player_HUD[i].SetActive(false);
+        }
+        hp = new GameObject[3];
+        m_player = MapLogic.Instance.m_players;
     }
 
     // Update is called once per frame
@@ -86,15 +87,16 @@ public class HUDManager : MonoBehaviour
         }
         for(int i = 0; i < m_playernum; i++)
         {
-            if(m_player[i])
+            GameObject player = MapLogic.Instance.getPlayer((PlayerID)i);
+            if(player)
             {
-                playerID = (int)m_player[i].GetComponent<PlayerLogic>().getPlayerID();
-                m_hp = (int)m_player[i].GetComponent<PlayerLogic>().GetHP();
-                m_weaponID = (int)m_player[i].GetComponent<PlayerLogic>().GetWeaponID();
-                m_powerUpID = (int)m_player[i].GetComponent<PlayerLogic>().GetPowerUpID();
-                UpdateHP(Player_HUD[playerID], m_hp);
-                UpdateWeapon(Player_HUD[playerID], m_weaponID);
-                UpdatePowerUp(Player_HUD[playerID], m_powerUpID);
+                playerID = player.GetComponent<PlayerLogic>().getPlayerID();
+                m_hp = player.GetComponent<PlayerLogic>().GetHP();
+                m_weaponID = player.GetComponent<PlayerLogic>().GetWeaponID();
+                m_powerUpID = player.GetComponent<PlayerLogic>().GetPowerUpID();
+                UpdateHP(Player_HUD[(int)playerID], m_hp);
+                UpdateWeapon(Player_HUD[(int)playerID], m_weaponID);
+                UpdatePowerUp(Player_HUD[(int)playerID], m_powerUpID);
             }
         }
     }
@@ -115,10 +117,10 @@ public class HUDManager : MonoBehaviour
         }
     }
 
-    void UpdateWeapon(GameObject player_HUD, int weaponID)
+    void UpdateWeapon(GameObject player_HUD, WeaponID weaponID)
     {
         m_weapon = player_HUD.transform.Find("Weapon").gameObject;
-        switch(weaponID)
+        switch((int)weaponID)
         {
             case 0:
                 m_weapon.GetComponent<RawImage>().texture = Transparent;
@@ -144,10 +146,10 @@ public class HUDManager : MonoBehaviour
         }
     }
 
-    void UpdatePowerUp(GameObject player_HUD, int powerUpI)
+    void UpdatePowerUp(GameObject player_HUD, PowerUpID powerUpI)
     {
         m_powerUp = player_HUD.transform.Find("PowerUp").gameObject;
-        switch(powerUpI)
+        switch((int)powerUpI)
         {
             case 0:
                 m_powerUp.GetComponent<RawImage>().texture = Transparent;

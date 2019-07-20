@@ -41,7 +41,7 @@ public class MapLogic : MonoBehaviour
     [SerializeField]    
     private GameObject player3Prefab = null;
     private GameObject [][] m_blocks;
-    private GameObject [] m_players;
+    public GameObject [] m_players;
     // Start is called before the first frame update
     void Start()
     {
@@ -82,7 +82,7 @@ public class MapLogic : MonoBehaviour
 
     void SummonPlayer() {        
         // Generate two for now
-        m_players = new GameObject [PlayerID.GetValues(typeof(PlayerID)).Length];
+        m_players = new GameObject [m_playerNum];
         
         const float playerHeight = 0;
         Transform Trans1 = m_blocks[0][0].transform;
