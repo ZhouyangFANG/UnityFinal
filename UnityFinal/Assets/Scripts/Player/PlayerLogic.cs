@@ -72,7 +72,7 @@ public class PlayerLogic : MonoBehaviour
         if (m_invincibleAfterDamageTimer < InvincibleAfterDamageTime) {
             m_invincibleAfterDamageTimer += Time.deltaTime;
         } else {
-            // reset appearence here
+            // reset appearance here
         }
     }
 
