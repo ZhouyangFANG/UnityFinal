@@ -33,8 +33,7 @@ public class ObstacleLogic : MonoBehaviour
     }
 
     public void takeDamage(DamageSourceLogic damageSource) {
-        if (damageSource.isMissile()) {
-            Debug.Log("Here");
+        if (damageSource.isMissile()) {            
             startDestroy();
         }  else {
             Hp -= damageSource.getDamage();  

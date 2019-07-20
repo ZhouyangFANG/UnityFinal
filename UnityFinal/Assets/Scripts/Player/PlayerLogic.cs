@@ -7,7 +7,8 @@ using UnityEngine;
 public class PlayerLogic : MonoBehaviour
 {
     PlayerID m_playerID;
-    
+    [SerializeField]
+    GameObject [] meshRenderers = null;
     const int FullHp = 3;
     int m_hp;
     Animator m_animator;
@@ -23,8 +24,8 @@ public class PlayerLogic : MonoBehaviour
 
     [SerializeField]
     bool m_isLeftHandIKActive = true;
-
-    const float InvincibleAfterDamageTime = 2.0f;
+    bool m_isInvincible;
+    const float InvincibleAfterDamageTime = 1.3f;
     float m_invincibleAfterDamageTimer = 0;
 
     GameObject m_takingPowerUp; // Ready to be cast
@@ -34,7 +35,7 @@ public class PlayerLogic : MonoBehaviour
     {
         m_animator = GetComponent<Animator>();
         m_hp = FullHp;
-        m_invincibleAfterDamageTimer = InvincibleAfterDamageTime;
+        m_invincibleAfterDamageTimer = InvincibleAfterDamageTime;        
     }
 
     public void InitInfo(PlayerID id) {
@@ -66,13 +67,24 @@ public class PlayerLogic : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (m_invincibleAfterDamageTimer < InvincibleAfterDamageTime) {
             m_invincibleAfterDamageTimer += Time.deltaTime;
+            if (Time.frameCount % 4 == 0) {
+                for (int i = 0; i < meshRenderers.Length; i++) {
+                    meshRenderers[i].GetComponent<SkinnedMeshRenderer>().enabled = !meshRenderers[i].GetComponent<Renderer>().enabled;
+                }
+            }
         } else {
-            // reset appearance here
+            for (int i = 0; i < meshRenderers.Length; i++) {
+                meshRenderers[i].GetComponent<SkinnedMeshRenderer>().enabled = true;
+            }
         }
+    }
+
+    void UpdateInvincibleAppearance() {        
+             
     }
 
     // Receive the damage from the block logic
