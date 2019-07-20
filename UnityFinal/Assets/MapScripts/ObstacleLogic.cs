@@ -41,9 +41,13 @@ public class ObstacleLogic : MonoBehaviour
         m_isSteady = false;
     }
 
+    void ResetObstacle() {
+        if (GetComponentInParent<BlockLogic>()) { 
+            GetComponentInParent<BlockLogic>().resetObstacle();
+        }
+    }
     public void takeDamage(DamageSourceLogic damageSource) {
-        if (damageSource.isMissile()) {
-            Debug.Log("Here");
+        if (damageSource.isMissile()) {            
             if (m_AudioSource && DestroySounds && !m_AudioSource.isPlaying) {
                 m_AudioSource.PlayOneShot(DestroySounds, 0.4f);
                 // Debug.Log("Sounds out");
@@ -51,12 +55,12 @@ public class ObstacleLogic : MonoBehaviour
             startDestroy();
         }  else {
             
-            if (Hp > 0 && m_AudioSource && DestroySounds) {
-                m_AudioSource.PlayOneShot(DestroySounds, 0.4f);
+            if (Hp > 0 && m_AudioSource && DestroySounds && !m_AudioSource.isPlaying) {
+                m_AudioSource.PlayOneShot(DestroySounds);
                 // Debug.Log("Sounds out");
             }  
-            if (Hp < 0 && m_AudioSource && UndestroyableSounds) {
-                m_AudioSource.PlayOneShot(UndestroyableSounds, 0.4f);
+            if (Hp < 0 && m_AudioSource && UndestroyableSounds && !m_AudioSource.isPlaying) {
+                m_AudioSource.PlayOneShot(UndestroyableSounds);
                 // Debug.Log("Sounds out");
             } 
 
@@ -72,12 +76,6 @@ public class ObstacleLogic : MonoBehaviour
     void Steady() {
         // Animaton Event
         m_isSteady = true;
-    }
-
-    private void OnDestroy() {
-        if (GetComponentInParent<BlockLogic>()) { 
-            GetComponentInParent<BlockLogic>().resetObstacle();
-        }
     }
 
     public bool isSteady() {

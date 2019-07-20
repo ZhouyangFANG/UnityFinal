@@ -1641,6 +1641,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72a855edbfd142646bcde58440a0c0c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meshRenderers:
+  - {fileID: 1139259378027016}
+  - {fileID: 1315779122668154}
+  - {fileID: 1305229542905346}
+  - {fileID: 1544378929893926}
   m_isRightHandIKActive: 1
   m_isLeftHandIKActive: 1
   HPSounds: {fileID: 8300000, guid: d88a80d53c21648dbb88f928cb1e7f6b, type: 3}
