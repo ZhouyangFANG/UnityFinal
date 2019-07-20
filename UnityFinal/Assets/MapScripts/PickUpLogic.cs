@@ -54,6 +54,9 @@ public class PickUpLogic : MonoBehaviour
         return objectPrefab;
     }
 
+    public void setSecretItemPrefab(GameObject prefab) {
+        objectPrefab = prefab;
+    }
     private void OnTriggerEnter(Collider other) {
         // // Used for test
         // if (other.gameObject.tag == "Player") {

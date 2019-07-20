@@ -7,6 +7,7 @@ using UnityEngine;
 // Summon or destroy obstacle, item, 
 public class RandomEventLogic : MonoBehaviour
 {    
+        
     MapLogic map;
     // Start is called before the first frame update
     void Start()
