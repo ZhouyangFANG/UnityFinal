@@ -175,7 +175,7 @@ public class BlockLogic : MonoBehaviour
         m_summonable = false;
     }
 
-    public void resetItem(GameObject item) {
+    public void resetItem() {
         m_pickUp = null;
         m_summonable = true;
     }

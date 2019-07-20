@@ -27,7 +27,7 @@ public class RandomEventLogic : MonoBehaviour
 
     void RandomChangeObstacleState() {
         
-        int num = Random.Range(5, 10);
+        int num = Random.Range(10, 20);
         for(int i = 0; i < num; i++) {
             GameObject block = map.getBlock(Random.Range(0, map.MapXBlockNum), Random.Range(0, map.MapZBlockNum));
             block.GetComponent<ObstacleSummonLogic>().swapRandomObstacleState();
@@ -36,7 +36,7 @@ public class RandomEventLogic : MonoBehaviour
 
     void RandomGenerateItem() {
         bool successFlag = false;
-        for (int i = 0; i < 5; i++) {         
+        for (int i = 0; i < 3; i++) {         
             GameObject block = map.getBlock(Random.Range(0, map.MapXBlockNum), Random.Range(0, map.MapZBlockNum));
             successFlag = block.GetComponent<PickUpSummonLogic>().summonRandomItem();                    
         }

@@ -127,6 +127,7 @@ MonoBehaviour:
     type: 3}
   obstacleNotDestroyablePrefab: {fileID: 4293904536457101298, guid: 92677d7832ffd924594bef4e70c9c0c6,
     type: 3}
+  lifetime: 0
 --- !u!114 &7651702897696188226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +156,7 @@ MonoBehaviour:
   - {fileID: 1903056498490387012, guid: 45c8784727911c84280f0d4c83ca6c54, type: 3}
   RandomItemPrefab: {fileID: 1940248462391775808, guid: 1f1139fe032d3624dbd2c2c2f2df9ea0,
     type: 3}
-  CanSummonRandomItem: 0
+  CanSummonRandomItem: 1
 --- !u!114 &7911918368669889037
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -27,9 +27,11 @@ public class PickUpSummonLogic : MonoBehaviour
         if(block.getPickUp())
         {
             lifetime -= Time.deltaTime;
-            if(lifetime < 0)
+            if(lifetime < 0 && m_Item)
             {
+                block.resetItem();
                 Destroy(m_Item);
+                m_Item = null;
             }
         }
     }
@@ -49,10 +51,9 @@ public class PickUpSummonLogic : MonoBehaviour
 
     void summonRandomKnownItem() {
         if (PickUpsPrefabList.Length > 0) {
-            GameObject newItem = Instantiate(PickUpsPrefabList[Random.Range(0, PickUpsPrefabList.Length)], transform);
-            m_Item = newItem;
-            block.setItem(newItem);
-        }                
+            m_Item = Instantiate(PickUpsPrefabList[Random.Range(0, PickUpsPrefabList.Length)], transform);            
+            block.setItem(m_Item);
+        }
     }
 
     void summonRandomUnknownItem() {
@@ -60,7 +61,7 @@ public class PickUpSummonLogic : MonoBehaviour
             PickUpLogic newItem = PickUpsPrefabList[Random.Range(0, PickUpsPrefabList.Length)].GetComponent<PickUpLogic>();
             PickUpLogic newRandomPickUp = Instantiate(RandomItemPrefab, transform).GetComponent<PickUpLogic>();
             newRandomPickUp.setSecretPickUp(newItem);
-            m_Item = newItem.gameObject;
+            m_Item = newRandomPickUp.gameObject;
             block.setItem(newRandomPickUp.gameObject);
         }        
     }
