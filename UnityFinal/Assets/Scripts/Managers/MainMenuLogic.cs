@@ -109,12 +109,12 @@ public class MainMenuLogic : MonoBehaviour
 
     public void OnEnglishClicked()
     {
-        m_LocalizationManager.GetComponent<LocalizationManager>().SetupLocalisation(Language.English);
+        LocalizationManager.Instance.SetupLocalisation(Language.English);
     }
 
     public void OnChineseClicked()
     {
-        m_LocalizationManager.GetComponent<LocalizationManager>().SetupLocalisation(Language.Chinese);
+        LocalizationManager.Instance.SetupLocalisation(Language.Chinese);
     }
 
     public void On2PlayerClicked()

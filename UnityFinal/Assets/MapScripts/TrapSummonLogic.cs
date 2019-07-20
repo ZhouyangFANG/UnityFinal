@@ -19,13 +19,15 @@ public class TrapSummonLogic : MonoBehaviour
         
     public void summonTrap() {        
         if (block.isSummonable()) {
+            GameObject newTrap;
             if (Random.Range(0,2) == 0) {                
-                GameObject newTrap = Instantiate(hurtTrapPrefab, transform);                
+                newTrap = Instantiate(hurtTrapPrefab, transform);                
                 block.setTrap(newTrap);                
             } else {
-                GameObject newTrap = Instantiate(slowTrapPrefab, transform);                
+                newTrap = Instantiate(slowTrapPrefab, transform);                
                 block.setTrap(newTrap);                
             }
+            newTrap.GetComponent<TrapLogic>().setLifeTime(Random.Range(5f, 15f));
         }
     }    
 

@@ -71,4 +71,8 @@
     <Key>Main Menu</Key>
     <Value>Main Menu</Value>
   </Entry>
+  <Entry>
+    <Key>Win</Key>
+    <Value>Player   Win!</Value>
+  </Entry>
 </Localization>

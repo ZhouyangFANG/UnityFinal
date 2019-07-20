@@ -8,13 +8,13 @@ public class GameManager : MonoBehaviour
 {
 
     [SerializeField]
-    GameObject m_pauseMenu;
+    GameObject m_pauseMenu = null;
 
     [SerializeField]
     int m_player = 2;
 
     [SerializeField]
-    GameObject m_eventSystem;
+    GameObject m_eventSystem = null;
 
     public static GameManager Instance;
 
@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 1;
             }
         }
+
+        CheckFinished();
     }
 
     public void ChangeScece(string sceneName)
@@ -73,5 +75,19 @@ public class GameManager : MonoBehaviour
     public int GetPlayer()
     {
         return m_player;
+    }
+    
+    void CheckFinished()
+    {
+        if(SceneManager.GetActiveScene().name == "GameScene")
+        {
+            if(GameObject.FindGameObjectsWithTag("Player").Length == 1)
+            {
+                PlayerID playerID = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLogic>().getPlayerID();
+                m_pauseMenu.GetComponent<PauseMenuLogic>().SetFinishedType((int)playerID);
+                m_pauseMenu.SetActive(true);
+                Time.timeScale = 0;
+            }
+        }
     }
 }

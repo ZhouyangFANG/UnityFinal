@@ -71,4 +71,8 @@
     <Key>Main Menu</Key>
     <Value>主菜单</Value>
   </Entry>
+  <Entry>
+    <Key>Win</Key>
+    <Value>      玩家  获胜！</Value>
+  </Entry>
 </Localization>

@@ -9,7 +9,6 @@ public class PlayerLogic : MonoBehaviour
     PlayerID m_playerID;
     [SerializeField]
     GameObject [] meshRenderers = null;
-    
     const int FullHp = 3;
     int m_hp;
     Animator m_animator;
@@ -32,9 +31,20 @@ public class PlayerLogic : MonoBehaviour
     GameObject m_takingPowerUp; // Ready to be cast
     WeaponLogic m_takingWeapon;
     // Start is called before the first frame update
+
+    [SerializeField]
+    AudioClip HPSounds;
+
+    [SerializeField]
+    AudioClip GetItemSounds;
+
+    AudioSource m_AudioSource;
+
+
     void Start()
     {
         m_animator = GetComponent<Animator>();
+        m_AudioSource = GetComponent<AudioSource>();
         m_hp = FullHp;
         m_invincibleAfterDamageTimer = InvincibleAfterDamageTime;        
     }
@@ -126,13 +136,16 @@ public class PlayerLogic : MonoBehaviour
     }
 
     void Death() {
-        const float ParticleHeightOffset = 5.0f;
-        ParticleEffectManager.Instance.playPlayerPickUpHeartEffect(transform.position + new Vector3(0, ParticleHeightOffset, 0));
         Destroy(gameObject);
     }
 
     void TakeWeapon(GameObject weapon) {
         // weapon is a prefab
+
+        if (m_AudioSource && GetItemSounds) {
+            m_AudioSource.PlayOneShot(GetItemSounds);
+            // Debug.Log("Sounds out");
+        }
         
         if (GetComponentsInChildren<WeaponLogic>().Length != 0) {
             // the player is holding other weapon
@@ -151,7 +164,10 @@ public class PlayerLogic : MonoBehaviour
 
     void TakePowerUp(GameObject powerUp) {
         // Save the pickup currently
-
+        if (m_AudioSource && GetItemSounds) {
+            m_AudioSource.PlayOneShot(GetItemSounds, 0.7f);
+            // Debug.Log("Sounds out");
+        }
         m_takingPowerUp = powerUp;
         
     }
@@ -169,7 +185,10 @@ public class PlayerLogic : MonoBehaviour
 
     void TakeHp() {
         if (m_hp < FullHp) {
-            ParticleEffectManager.Instance.playPlayerPickUpHeartEffect(transform.position + new Vector3(0, 5.0f, 0));
+            if (m_AudioSource && HPSounds) {
+                m_AudioSource.PlayOneShot(HPSounds);
+                // Debug.Log("Sounds out");
+            }
             m_hp += 1;
             Debug.Log(m_playerID.ToString() + " is Recovered for 1 hp");
         }
