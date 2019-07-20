@@ -11,17 +11,28 @@ public class DaggerLogic : MonoBehaviour
     [SerializeField]
     DamageSourceLogic m_damageSource = null;
 
+    [SerializeField]
+    AudioClip SlashSounds;
+
+    AudioSource m_AudioSource;
+
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+        m_AudioSource = GetComponent<AudioSource>();
         GetComponent<WeaponLogic>().OnAttackStart += Attack; // When OnAttackStart is called, Attack is called
         m_damageSource.gameObject.SetActive(false); // Deactivate the DamageSource at default
     }
 
     void Attack() {
         animator.SetTrigger("Attack");
+        if (m_AudioSource && SlashSounds) {
+            m_AudioSource.PlayOneShot(SlashSounds);
+            // Debug.Log("Sounds out");
+        }
+        // Debug.Log("Attack");
     }
 
     void activateDamageSource() {

@@ -10,12 +10,18 @@ public class ClaymoreLogic : MonoBehaviour
     int Damage = 1;
     [SerializeField]
     DamageSourceLogic[] m_damageSource = null;
+    [SerializeField]
+    AudioClip SlashSounds;
+
+    AudioSource m_AudioSource;
 
 
     // Start is called before the first frame update
     void Start()
     {
+
         animator = GetComponent<Animator>();
+        m_AudioSource = GetComponent<AudioSource>();
         GetComponent<WeaponLogic>().OnAttackStart += Attack; // When OnAttackStart is called, Attack is called
         for (int index = 0; index < m_damageSource.Length; ++ index) {
             m_damageSource[index].gameObject.SetActive(false); // Deactivate the DamageSource at default
@@ -25,6 +31,11 @@ public class ClaymoreLogic : MonoBehaviour
 
     void Attack() {
         animator.SetTrigger("Attack");
+        if (m_AudioSource && SlashSounds) {
+            m_AudioSource.PlayOneShot(SlashSounds);
+            // Debug.Log("Sounds out");
+        }
+        // Debug.Log("Attack");
     }
 
     void activateDamageSource() {
