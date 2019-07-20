@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hp: -1
   isDestroyable: 0
-  DestroySounds: {fileID: 0}
+  DestroySounds: {fileID: 8300000, guid: 37b842fca322b42cba396711e7225a08, type: 3}
   UndestroyableSounds: {fileID: 8300000, guid: a9fccb6e4087043fdaad5a99f24ac058, type: 3}
 --- !u!95 &5773077362888969922
 Animator:
