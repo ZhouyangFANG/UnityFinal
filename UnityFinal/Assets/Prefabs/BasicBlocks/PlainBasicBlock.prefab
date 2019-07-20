@@ -152,6 +152,9 @@ MonoBehaviour:
   - {fileID: 1903056498490387012, guid: 54a4ee0facab8e84482a9021dff4f430, type: 3}
   - {fileID: 1903056498490387012, guid: dc34e25f93008404ab3928e5cc21e23c, type: 3}
   - {fileID: 1903056498490387012, guid: f3fc6bab8f1f8be42be5c99bcafa836f, type: 3}
+  RandomItemPrefab: {fileID: 1940248462391775808, guid: 1f1139fe032d3624dbd2c2c2f2df9ea0,
+    type: 3}
+  CanSummonRandomItem: 1
 --- !u!114 &7911918368669889037
 MonoBehaviour:
   m_ObjectHideFlags: 0
