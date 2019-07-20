@@ -12,10 +12,18 @@ public class ObstacleLogic : MonoBehaviour
     Animator animator;
     bool m_isSteady; // Whether is animating or not
 
+    [SerializeField]
+    AudioClip DestroySounds;
+    [SerializeField]
+    AudioClip UndestroyableSounds;
+
+    AudioSource m_AudioSource;
+
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+        m_AudioSource = GetComponent<AudioSource>();
         m_isSteady = false;
     }
 
@@ -29,15 +37,30 @@ public class ObstacleLogic : MonoBehaviour
 
     public void startDestroy() {
         animator.SetTrigger("Destroy");
+        
         m_isSteady = false;
     }
 
     public void takeDamage(DamageSourceLogic damageSource) {
         if (damageSource.isMissile()) {
             Debug.Log("Here");
+            if (m_AudioSource && DestroySounds && !m_AudioSource.isPlaying) {
+                m_AudioSource.PlayOneShot(DestroySounds);
+                // Debug.Log("Sounds out");
+            }  
             startDestroy();
         }  else {
-            Hp -= damageSource.getDamage();  
+            
+            if (Hp > 0 && m_AudioSource && DestroySounds) {
+                m_AudioSource.PlayOneShot(DestroySounds);
+                // Debug.Log("Sounds out");
+            }  
+            if (Hp < 0 && m_AudioSource && UndestroyableSounds) {
+                m_AudioSource.PlayOneShot(UndestroyableSounds);
+                // Debug.Log("Sounds out");
+            } 
+
+            Hp -= damageSource.getDamage(); 
         }
     }
 
