@@ -13,12 +13,15 @@ using UnityEngine;
 public class DamageSourceLogic : MonoBehaviour
 {
     PlayerID m_sourcePlayerId;
-    int m_damage = 1;    
+    int m_damage = 1;
+    [SerializeField]
+    bool m_isMissile = false;
 
     public delegate void DisableEvent();
     public event DisableEvent OnDisableEvent;
-    void Start() {
 
+    void Start() {
+                
     }
 
     public void InitDamageSourceInfo(PlayerID source, int damage) {
@@ -46,6 +49,13 @@ public class DamageSourceLogic : MonoBehaviour
         return m_sourcePlayerId;
     }
 
+    public bool isMissile() {
+        return m_isMissile;
+    }
+
+    public void setMissile() {
+        m_isMissile = true;
+    }
 
 
 }

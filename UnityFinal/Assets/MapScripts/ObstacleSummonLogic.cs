@@ -10,6 +10,10 @@ public class ObstacleSummonLogic : MonoBehaviour
     [SerializeField]
     GameObject obstacleNotDestroyablePrefab = null;    
     BlockLogic block;
+
+    [SerializeField]
+    float lifetime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,9 +21,16 @@ public class ObstacleSummonLogic : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-
+        if(block.getObstacle())
+        {
+            lifetime -= Time.deltaTime;
+            if(lifetime < 0)
+            {
+                block.getObstacle().GetComponent<ObstacleLogic>().startDestroy();    
+            }
+        }
     }
 
     public void summonObstacle(GameObject obstacle) {
@@ -28,7 +39,7 @@ public class ObstacleSummonLogic : MonoBehaviour
         if (block.isSummonable()) {            
             block.setObstacle(Instantiate(obstacle, transform)); // The prefab should play the summon animation automatically
         }
-        
+        lifetime = Random.Range(10.0f, 15.0f);
     }
 
     public void destroyObstacle() {
