@@ -44,9 +44,23 @@ public class ObstacleLogic : MonoBehaviour
     public void takeDamage(DamageSourceLogic damageSource) {
         if (damageSource.isMissile()) {
             Debug.Log("Here");
+            if (Hp > 0 && m_AudioSource && DestroySounds) {
+                m_AudioSource.PlayOneShot(DestroySounds);
+                // Debug.Log("Sounds out");
+            }  
             startDestroy();
         }  else {
-            Hp -= damageSource.getDamage();  
+            
+            if (Hp > 0 && m_AudioSource && DestroySounds) {
+                m_AudioSource.PlayOneShot(DestroySounds);
+                // Debug.Log("Sounds out");
+            }  
+            if (Hp < 0 && m_AudioSource && UndestroyableSounds) {
+                m_AudioSource.PlayOneShot(UndestroyableSounds);
+                // Debug.Log("Sounds out");
+            } 
+
+            Hp -= damageSource.getDamage(); 
         }
     }
 
