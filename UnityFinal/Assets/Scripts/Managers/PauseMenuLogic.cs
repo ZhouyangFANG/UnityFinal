@@ -104,4 +104,8 @@ public class PauseMenuLogic : MonoBehaviour
         transform.Find("WinText").gameObject.SetActive(true);
         transform.Find("WinText/WinPlayer").gameObject.GetComponent<Text>().text =(playerID+1).ToString();
     }
+
+    private void OnDestroy() {
+        Time.timeScale = 1;    
+    }
 }
