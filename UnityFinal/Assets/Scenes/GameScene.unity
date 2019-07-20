@@ -1481,18 +1481,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 2eb7d917287dd473496e9ee8187d5b5b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.8908999
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 2eb7d917287dd473496e9ee8187d5b5b, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.8908999
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 2eb7d917287dd473496e9ee8187d5b5b, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.8908999
-      objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 2eb7d917287dd473496e9ee8187d5b5b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.0334
@@ -1548,6 +1536,18 @@ PrefabInstance:
     - target: {fileID: 400004, guid: 2eb7d917287dd473496e9ee8187d5b5b, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.012172185
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 2eb7d917287dd473496e9ee8187d5b5b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.8908999
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 2eb7d917287dd473496e9ee8187d5b5b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.8908999
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 2eb7d917287dd473496e9ee8187d5b5b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.8908999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2eb7d917287dd473496e9ee8187d5b5b, type: 3}
@@ -16140,6 +16140,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2057321549}
   m_CullTransparentMesh: 0
+--- !u!1 &2063456790
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2063456792}
+  - component: {fileID: 2063456791}
+  m_Layer: 0
+  m_Name: ParticleEffectsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2063456791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063456790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a72f8b7edd0ea4e982d31b21164f50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerDeathEffect: {fileID: 8669223032248525323, guid: baba5c7e42ac9a14bb24939c418bc001,
+    type: 3}
+  PlayerPickUpHeartEffect: {fileID: 5905792438931696095, guid: 06733009b12159b409176e799b010a22,
+    type: 3}
+--- !u!4 &2063456792
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063456790}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2110121486
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -9,10 +9,25 @@ public class SpeedUpLogic : MonoBehaviour
     const float EffectTime = 5.0f;
     float m_effectTimer;
     bool isActivated;
+    PlayerController player;
     // Start is called before the first frame update
     void Awake()
     {
-        GetComponent<PowerUpLogic>().OnCastStart += Cast;        
+        GetComponent<PowerUpLogic>().OnCastStart += Cast;
+        player = transform.parent.GetComponent<PlayerController>();
+        SpeedUpLogic [] list1 = player.GetComponentsInChildren<SpeedUpLogic>();
+        SpeedDownLogic [] list2 = player.GetComponentsInChildren<SpeedDownLogic>();
+        for (int i = 0; i < list1.Length; i++) {
+            if (list1[i] != this) {
+                Destroy(list1[i].gameObject);
+            }
+        }
+        
+        for (int i = 0; i < list2.Length; i++) {
+            if (list2[i] != this) {
+                Destroy(list2[i].gameObject);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -40,9 +55,6 @@ public class SpeedUpLogic : MonoBehaviour
     }
 
     private void OnDestroy() {
-        PlayerController player = transform.parent.GetComponent<PlayerController>();
-        if (player) {
-            player.resetSpeed();
-        }    
+         
     }
 }
