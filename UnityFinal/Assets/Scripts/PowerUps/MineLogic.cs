@@ -6,26 +6,23 @@ using UnityEngine;
 
 public class MineLogic : MonoBehaviour
 {
-    const float EffectTime = 5.0f;
-    float m_effectTimer;    
+    [SerializeField]
+    GameObject MinePrefab = null;
     // Start is called before the first frame update
     void Awake()
     {
-        GetComponent<PowerUpLogic>().OnCastStart += Cast;
-        m_effectTimer = 0;            
+        GetComponent<PowerUpLogic>().OnCastStart += Cast;     
     }
 
     // Update is called once per frame
-    void Update()
-    {        
-        m_effectTimer += Time.deltaTime;
-        if (m_effectTimer > EffectTime) {            
-            Destroy(gameObject);
-        }     
-    }
 
-    void Cast() {         
-        m_effectTimer = 0;
+    void Cast() {
+        PlayerID playerId = GetComponentInParent<PlayerLogic>().getPlayerID(); 
+        BlockLogic block = GetComponentInParent<PlayerLogic>().GetComponentInParent<BlockLogic>();        
+        TrapLogic mine = Instantiate(MinePrefab, block.gameObject.transform).GetComponent<TrapLogic>();
+        mine.setSourcePlayer(playerId);
+        block.setTrap(mine.gameObject);
+        Destroy(gameObject);
     }
 
     private void OnDestroy() {

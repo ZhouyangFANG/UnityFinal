@@ -20,6 +20,8 @@ public enum PowerUpID {
 // transform.parent should be the player
 public class PowerUpLogic : MonoBehaviour
 {
+    [SerializeField]
+    PowerUpID m_powerUpID;
 
     public delegate void CastEvent();
     public event CastEvent OnCastStart;
@@ -45,4 +47,8 @@ public class PowerUpLogic : MonoBehaviour
         }
     }
 
+    public PowerUpID GetPowerUpID()
+    {        
+        return m_powerUpID;
+    }
 }

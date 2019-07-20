@@ -12,6 +12,9 @@ public class TrapLogic : MonoBehaviour
     TrapType Type;
     [SerializeField]
     GameObject slowDownEffector;
+    PlayerID m_sourcePlayerId = PlayerID.Nobody;
+    float LifeTime = 20.0f;
+    float m_lifeTimer = 0.0f;
     Animator animator;
     bool m_isSteady;
     // Start is called before the first frame update
@@ -22,7 +25,20 @@ public class TrapLogic : MonoBehaviour
     }
 
     // Update is called once per frame
-    
+    private void FixedUpdate() {
+        if (m_isSteady) {
+            m_lifeTimer += Time.deltaTime;
+            if (m_lifeTimer >= LifeTime) {
+                startDestroy();                
+            }
+        }
+    }
+    public void setSourcePlayer(PlayerID id) {
+        m_sourcePlayerId = id;
+    }
+    public void setLifeTime(float time) {
+        LifeTime = time;
+    }
     public void startDestroy() {
         animator.SetTrigger("Destroy");
         m_isSteady = false;
@@ -41,14 +57,16 @@ public class TrapLogic : MonoBehaviour
         return m_isSteady;
     }
 
-    public void hitPlayer(GameObject player) {
-        if (Type == TrapType.Hurt) {
-            player.GetComponent<PlayerLogic>().takeDamage(1);
-            animator.SetTrigger("Trigger");
-            m_isSteady = false;
-        } else if (Type == TrapType.Slow) {
-            player.GetComponent<PlayerLogic>().takeEffector(slowDownEffector);
-            startDestroy();
-        }        
+    public void hitPlayer(PlayerLogic player) {
+        if (player.getPlayerID() != m_sourcePlayerId) {
+            if (Type == TrapType.Hurt) {
+                player.takeDamage(1);
+                animator.SetTrigger("Trigger");
+                m_isSteady = false;       
+            } else if (Type == TrapType.Slow) {
+                player.takeEffector(slowDownEffector);
+                startDestroy();
+            }        
+        }
     }
 }
