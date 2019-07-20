@@ -34,7 +34,7 @@ public class PistolLogic : MonoBehaviour
         animator.SetTrigger("Attack");
 
         if (m_AudioSource && ShootSounds) {
-            m_AudioSource.PlayOneShot(ShootSounds, 0.3f);
+            m_AudioSource.PlayOneShot(ShootSounds, 0.2f);
             // Debug.Log("Sounds out");
         }
         GameObject bullet = Instantiate(bulletPrefab, shootPos.position, shootPos.rotation); // Generate a bullet at the shootPos
