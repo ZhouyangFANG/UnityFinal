@@ -136,6 +136,7 @@ public class PlayerLogic : MonoBehaviour
     }
 
     void Death() {
+        GameObject.Find("Canvas").GetComponent<HUDManager>().DestoryPlayerHUD((int)getPlayerID());
         Destroy(gameObject);
     }
 
