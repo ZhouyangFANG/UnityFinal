@@ -7,13 +7,10 @@ public class HUDManager : MonoBehaviour
 {
     GameObject m_gameManager;
 
-    [SerializeField]
     int m_playernum;
-    [SerializeField]
     GameObject [] m_player;
     PlayerID playerID;
 
-    [SerializeField]
     GameObject [] Player_HUD;
     GameObject [] hp;
     int m_hp;
