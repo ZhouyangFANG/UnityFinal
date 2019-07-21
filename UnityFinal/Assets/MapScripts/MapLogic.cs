@@ -137,7 +137,7 @@ public class MapLogic : MonoBehaviour
                 return m_players[(int)id];
             }
         }
-        Debug.LogError(("MapLogic: Invalid access to player " + id));
+        // Debug.LogError(("MapLogic: Invalid access to player " + id));
         return null;
     }
 }

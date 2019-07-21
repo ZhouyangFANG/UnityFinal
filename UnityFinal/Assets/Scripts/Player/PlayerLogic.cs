@@ -100,6 +100,14 @@ public class PlayerLogic : MonoBehaviour
 
     // Receive the damage from the block logic
     public void takeDamage(DamageSourceLogic damageSource) {
+        ShieldLogic shield = GetComponentInChildren<ShieldLogic>();
+    
+        if (shield) {
+            Destroy(shield.gameObject);
+            damageSource.gameObject.SetActive(false);
+            m_invincibleAfterDamageTimer = 0.0f;
+            return;
+        }
         if (damageSource.getSourcePlayerID() != m_playerID) {
             // Prevent damage to self (if sourcePlayerId is set)
             if (m_invincibleAfterDamageTimer >= InvincibleAfterDamageTime) {

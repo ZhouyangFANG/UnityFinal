@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
         isVerticalMoving = Input.GetButton(m_playerID.ToString() + "_VerticalMove");
         isMoved = false;
 
-        isCasting = Input.GetButtonDown(m_playerID.ToString() + "_CastPowerUp");
+        isCasting = Input.GetButton(m_playerID.ToString() + "_CastPowerUp");
     }
 
     bool isController() {
