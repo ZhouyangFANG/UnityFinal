@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 592268830423666706}
   - component: {fileID: 5145344365907422423}
   - component: {fileID: 2886309742483640480}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,7 +241,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4584229040214435759}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: LeftHandPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,7 +271,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2302488719092122398}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RightHandPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,7 +301,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6484363645798388759}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: shootPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}

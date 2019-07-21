@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9283502433196626}
   - component: {fileID: 9283502451547922}
   - component: {fileID: 9283502451517106}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: CFX3 Stars
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4511,7 +4511,7 @@ GameObject:
   - component: {fileID: 9283502433196628}
   - component: {fileID: 9283502451547924}
   - component: {fileID: 9283502451517108}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: CFX3 Spikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9102,7 +9102,7 @@ GameObject:
   - component: {fileID: 9283502451547926}
   - component: {fileID: 9283502451517110}
   - component: {fileID: 9283502426469270}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: SlowDownEffect (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13763,7 +13763,7 @@ GameObject:
   - component: {fileID: 6120938421077084389}
   - component: {fileID: 6120938421077084391}
   - component: {fileID: 1337396919325278877}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: SlowDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}

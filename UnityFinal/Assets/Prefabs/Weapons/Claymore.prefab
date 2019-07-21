@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8201081173585417299}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ClaymoreRightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 8335127634878338993}
   - component: {fileID: 1979841568468204639}
   - component: {fileID: 2969954639047239178}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Claymore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 5819157418593800916}
   - component: {fileID: 3509325935304413205}
   - component: {fileID: 1607659690897627990}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Claymore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -305,7 +305,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3617434919475517501}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ClaymoreLeftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -337,6 +337,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DamageSource (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3140468101471846747, guid: 8ddbdc1f160bf23438ce5b965f0055e0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5270520011980974756, guid: 8ddbdc1f160bf23438ce5b965f0055e0,
         type: 3}
@@ -425,6 +430,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DamageSource (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3140468101471846747, guid: 8ddbdc1f160bf23438ce5b965f0055e0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 5270520011980974756, guid: 8ddbdc1f160bf23438ce5b965f0055e0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -511,6 +521,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DamageSource
+      objectReference: {fileID: 0}
+    - target: {fileID: 3140468101471846747, guid: 8ddbdc1f160bf23438ce5b965f0055e0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5270520011980974756, guid: 8ddbdc1f160bf23438ce5b965f0055e0,
         type: 3}

@@ -33,7 +33,7 @@ public class CameraLogic : MonoBehaviour
         UpdatePlayersPosition();
 
         m_cameraPosition.x = m_PlayersCenter.x;
-        m_cameraPosition.y = Mathf.Clamp(m_PlayersDistence /3f + 8f, 30.0f, 1000.0f);
+        m_cameraPosition.y = Mathf.Clamp(m_PlayersDistence /3f + 10f, 35.0f, 1000.0f);
         m_cameraPosition.z = m_PlayersCenter.z - (m_PlayersDistence /3.5f + 5f);
         transform.SetPositionAndRotation(m_cameraPosition, Quaternion.identity);
         transform.LookAt(m_PlayersCenter);

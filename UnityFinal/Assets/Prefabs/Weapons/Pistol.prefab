@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4347226976299302}
   - component: {fileID: 33666515589048406}
   - component: {fileID: 23835158718552662}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Handgun_01_Iron_Sights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 4691602961401422}
   - component: {fileID: 33832857500582034}
   - component: {fileID: 23092561933669128}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Handgun_01_Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 8836992029211343127}
   - component: {fileID: 6937331476729858171}
   - component: {fileID: 4125021338214094639}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -401,7 +401,7 @@ GameObject:
   - component: {fileID: 4404546223509156}
   - component: {fileID: 33127433654760796}
   - component: {fileID: 23961955901227076}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Handgun_01_Mag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -476,7 +476,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3358248593731527742}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ShootPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -506,7 +506,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 967036019594118183}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: LeftHandPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -536,7 +536,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 444745171614137735}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RightHandPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}

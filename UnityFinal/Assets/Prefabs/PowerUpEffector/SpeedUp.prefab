@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6120938421077084389}
   - component: {fileID: 6120938421077084391}
   - component: {fileID: 6120938421077084388}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: SpeedUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,6 +69,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SpeedUpEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 455229284502847758, guid: 125e550b14c8f9b4bb63c4599fbcce89,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 455229284502489720, guid: 125e550b14c8f9b4bb63c4599fbcce89,
         type: 3}
