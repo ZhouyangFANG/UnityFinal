@@ -1,8 +1,8 @@
-UnityFinal/Library/
-UnityFinal/obj/
-UnityFinal/Temp/
-UnityFinal/Build/
-UnityFinal/.vs
-UnityFinal/.vscode
-UnityFinal/Assembly-CSharp.csproj
-UnityFinal/Assembly-CSharp-Editor.csproj
+Library/
+obj/
+Temp/
+Build/
+.vs
+.vscode
+Assembly-CSharp.csproj
+Assembly-CSharp-Editor.csproj
